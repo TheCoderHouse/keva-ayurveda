@@ -1,0 +1,194 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Design tokens — Keva Ayurveda
+   Calm, earthy, premium. Forest + ivory + turmeric gold. */
+@theme {
+  /* 60 / 30 / 10 palette */
+  --color-ivory: #e8e9ef;        /* 60% — surfaces */
+  --color-cream: #dcdde6;        /* tint of 60% */
+  --color-sand: #cdcfda;         /* deeper tint of 60% */
+  --color-sage: #a9b887;         /* 30% — secondary */
+  --color-sage-100: #d4dcc0;     /* tint of 30% */
+  --color-forest-950: #2e2d28;   /* 10% — text & accents */
+  --color-forest-900: #2e2d28;
+  --color-forest-800: #3e3d36;
+  --color-forest-700: #55544b;
+  --color-gold-300: #a9b887;     /* accent on dark = sage */
+  --color-gold-500: #7d8d5b;
+  --color-gold-700: #55663a;     /* accent text on light (AA) */
+  --color-clay: #55544b;
+  --color-ink: #2e2d28;
+  --color-ink-soft: #55544b;
+
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(46 45 40 / 0.05), 0 12px 32px -12px rgb(46 45 40 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(46 45 40 / 0.06), 0 28px 56px -20px rgb(46 45 40 / 0.26);
+
+  --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 48s linear infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-gold-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-forest-950);
+  }
+}
+
+@layer utilities {
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Scroll-reveal (toggled by <Reveal/>) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .animate-float, .animate-marquee { animation: none !important; }
+  * { transition-duration: 0.01ms !important; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   shadcn/ui tokens, mapped onto the Keva palette (60 / 30 / 10).
+   shadcn components (button, carousel…) read these; our own utilities above stay as-is.
+   Light theme only.
+--------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #e8e9ef;
+  --foreground: #2e2d28;
+  --card: #f4f4f8;
+  --card-foreground: #2e2d28;
+  --popover: #f4f4f8;
+  --popover-foreground: #2e2d28;
+  --primary: #2e2d28;
+  --primary-foreground: #e8e9ef;
+  --secondary: #a9b887;
+  --secondary-foreground: #2e2d28;
+  --muted: #dcdde6;
+  --muted-foreground: #55544b;
+  --accent: #d4dcc0;
+  --accent-foreground: #2e2d28;
+  --destructive: #a3402f;
+  --border: rgb(46 45 40 / 0.15);
+  --input: rgb(46 45 40 / 0.15);
+  --ring: #a9b887;
+  --radius: 0.75rem;
+}
+
+/* Hero: on desktop the focal photo runs from the container's left edge to where the booking form begins
+   (container content edge, minus form width 23rem + 1.5rem gap). */
+@media (min-width: 1024px) {
+  .hero-focal {
+    left: calc(max(0rem, 50vw - 40rem) * 1);
+    right: calc(max(2.5rem, (100vw - 80rem) / 2 + 2.5rem) + 24.5rem);
+  }
+}
+
+/* Decorative falling leaves (see <FallingLeaves/>). Plain CSS so it never depends on theme generation. */
+@keyframes leaf-fall {
+  0%   { transform: translate3d(0, -14cqh, 0) rotate(0deg); opacity: 0; }
+  8%   { opacity: 0.9; }
+  30%  { transform: translate3d(calc(var(--drift, 60px) * 0.6), 30cqh, 0) rotate(calc(var(--spin, 200deg) * 0.3)); }
+  55%  { transform: translate3d(calc(var(--drift, 60px) * -0.4), 62cqh, 0) rotate(calc(var(--spin, 200deg) * 0.6)); }
+  92%  { opacity: 0.9; }
+  100% { transform: translate3d(var(--drift, 60px), 112cqh, 0) rotate(var(--spin, 200deg)); opacity: 0; }
+}
+.leaf-fall {
+  animation-name: leaf-fall;
+  animation-duration: var(--leaf-dur, 16s);
+  animation-timing-function: linear;
+  animation-delay: var(--leaf-delay, 0s);
+  animation-iteration-count: infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .leaf-fall { animation-name: none; opacity: 0.4; transform: translateY(40cqh); }
+}
