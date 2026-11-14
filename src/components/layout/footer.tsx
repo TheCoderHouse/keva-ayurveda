@@ -121,7 +121,15 @@ export function Footer() {
             <Logo />
             <p className="text-xs text-forest-900/60">Copyright © 2018-25 Keva Ayurveda. All Rights Reserved.</p>
           </div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-forest-900/55">Serving since 2011</p>
+          <div className="flex flex-col gap-1 sm:items-end">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-forest-900/55">Serving since 2011</p>
+            <p className="text-xs text-forest-900/60">
+              Designed &amp; developed by{" "}
+              <a href="https://thecoderhouse.com/" target="_blank" rel="noopener noreferrer" className="font-medium text-forest-900 underline-offset-4 transition-colors hover:text-gold-700 hover:underline">
+                thecoderhouse.com
+              </a>
+            </p>
+          </div>
         </div>
       </Container>
     </footer>
