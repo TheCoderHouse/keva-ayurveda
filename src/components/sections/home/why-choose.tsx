@@ -6,6 +6,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { cn } from "@/lib/cn";
 import { whyChoose } from "@/content/home";
 import { ctaHref } from "@/content/site";
+import { WhyChooseMobile } from "./why-choose-mobile";
 
 /** Soft colour glow behind each row; alternates so rows feel distinct (palette tints only). */
 const GLOWS = [
@@ -19,13 +20,17 @@ const GLOWS = [
  */
 export function WhyChoose() {
   return (
-    <section aria-labelledby="why-title" className="relative isolate overflow-hidden py-12 lg:py-16">
+    <section aria-labelledby="why-title" className="relative isolate overflow-clip py-12 lg:py-16">
       <Container>
         <Reveal slow repeat>
           <SectionTitle id="why-title">Why Choose Keva Ayurveda</SectionTitle>
         </Reveal>
 
-        <ol className="mt-6 space-y-6 lg:space-y-2">
+        <div className="mt-4">
+          <WhyChooseMobile />
+        </div>
+
+        <ol className="mt-6 hidden space-y-2 lg:block">
           {whyChoose.map((w, i) => {
             const flip = i % 2 === 1;
             const external = w.cta.href === "appointment" || w.cta.href.startsWith("tel:");

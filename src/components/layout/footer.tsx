@@ -26,7 +26,7 @@ export function Footer() {
 
       <Container className="pb-10 pt-16 sm:pt-20 lg:pb-5 lg:pt-8">
         <div className="lg:flex lg:items-center lg:justify-between lg:gap-8">
-        <h2 className="max-w-5xl text-balance font-display text-4xl font-normal leading-[1.05] tracking-tight sm:text-5xl lg:max-w-none lg:text-[1.7rem] lg:whitespace-nowrap xl:text-[2.1rem] 2xl:text-[2.5rem]">
+        <h2 className="max-w-5xl text-balance font-display text-3xl font-normal leading-[1.1] tracking-tight sm:text-5xl lg:max-w-none lg:text-[1.7rem] lg:whitespace-nowrap xl:text-[2.1rem] 2xl:text-[2.5rem]">
           Authentic, Affordable &amp; Accessible Ayurveda <span className="font-bold text-gold-500">for all.</span>
         </h2>
         <a
@@ -81,8 +81,9 @@ export function Footer() {
         </div>
 
         {/* link columns */}
-        <div className="grid gap-10 pt-10 sm:grid-cols-2 lg:gap-x-10 lg:gap-y-6 lg:pt-5 lg:grid-cols-[2.1fr_1fr_1fr_1.2fr]">
-          <div>
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 pt-10 sm:gap-x-10 lg:gap-y-6 lg:pt-5 lg:grid-cols-[2.1fr_1fr_1fr_1.2fr]">
+          {/* phones: About and Head Office span the full width, the link columns sit side by side */}
+          <div className="col-span-2 sm:col-span-1">
             <p className={label}>About Keva Ayurveda</p>
             <p className="mt-6 text-[15px] leading-relaxed text-forest-900/80 lg:mt-2.5 lg:text-[13px] lg:leading-[1.5]">{site.about}</p>
           </div>
@@ -98,7 +99,7 @@ export function Footer() {
               </ul>
             </nav>
           ))}
-          <div>
+          <div className="col-span-2 sm:col-span-1">
             <p className={label}>Head Office</p>
             <p className="mt-6 flex gap-3 text-[15px] lg:mt-3 leading-relaxed text-forest-900/80">
               <MapPin aria-hidden className="mt-1 size-4 shrink-0 text-gold-700" />

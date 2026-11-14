@@ -58,7 +58,7 @@ export function HeroCarousel() {
             </div>
 
             {/* palette-toned scrim so the headline stays legible; one continuous layer, so there is no visible seam where the sharp photo begins */}
-            <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ivory/95 via-ivory/70 via-45% to-ivory/0 lg:via-ivory/45 lg:via-30% lg:to-60%" />
+            <div aria-hidden className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-ivory/95 via-ivory/70 via-45% to-ivory/0 lg:inset-0 lg:w-auto lg:via-ivory/45 lg:via-30% lg:to-60%" />
 
             <div className={cn("relative mx-auto flex h-full w-full max-w-7xl flex-col justify-center px-4 pb-5 pt-0 transition-opacity sm:pb-10 lg:justify-center lg:pt-16 sm:px-6 lg:px-10 lg:pb-24", active ? "opacity-100 delay-500 duration-500" : "opacity-0 duration-300")}>
               <p className="load-rise load-d2 mb-1.5 inline-flex w-fit items-center gap-1.5 rounded-full border border-forest-900/15 bg-white/60 px-2 py-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] sm:mb-4 sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:tracking-[0.2em] text-forest-900 backdrop-blur-md">

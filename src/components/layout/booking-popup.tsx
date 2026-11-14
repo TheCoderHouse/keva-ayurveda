@@ -58,6 +58,15 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
   return (
     <BookingContext.Provider value={value}>
       {children}
+      {/* phones: dim backdrop behind the bottom sheet */}
+      <div
+        aria-hidden
+        onClick={close}
+        className={cn(
+          "fixed inset-0 z-50 bg-forest-950/45 transition-opacity duration-500 sm:hidden",
+          isOpen ? "opacity-100" : "pointer-events-none opacity-0",
+        )}
+      />
       <div
         ref={panel}
         role="dialog"
@@ -65,12 +74,14 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
         aria-hidden={!isOpen}
         inert={!isOpen}
         className={cn(
-          "fixed bottom-[5.5rem] right-3 z-50 max-h-[calc(100dvh-8rem)] w-[calc(100vw-1.5rem)] origin-bottom-right overflow-y-auto overscroll-contain rounded-[1.75rem] border border-white/70 bg-ivory text-forest-900 shadow-[0_30px_70px_-20px_rgb(13_31_23/0.55)] sm:bottom-[7.75rem] sm:right-6 sm:w-[24rem]",
+          "fixed inset-x-0 bottom-0 z-50 max-h-[88dvh] w-full origin-bottom-right overflow-y-auto overscroll-contain rounded-t-[1.75rem] border border-white/70 bg-ivory pb-[env(safe-area-inset-bottom)] text-forest-900 shadow-[0_30px_70px_-20px_rgb(13_31_23/0.55)]",
+          "sm:inset-x-auto sm:bottom-[7.75rem] sm:right-6 sm:max-h-[calc(100dvh-8rem)] sm:w-[24rem] sm:rounded-[1.75rem] sm:pb-0",
           "transition-[opacity,transform,visibility] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:duration-0",
-          isOpen ? "visible translate-y-0 scale-100 opacity-100" : "invisible translate-y-6 scale-95 opacity-0",
+          isOpen ? "visible translate-y-0 scale-100 opacity-100" : "invisible translate-y-full opacity-100 sm:translate-y-6 sm:scale-95 sm:opacity-0",
         )}
       >
-        <div className="flex items-center gap-3 border-b border-forest-900/10 px-5 py-4">
+        <span aria-hidden className="mx-auto mt-2.5 block h-1 w-10 rounded-full bg-forest-900/20 sm:hidden" />
+        <div className="flex items-center gap-3 border-b border-forest-900/10 px-5 py-3 sm:py-4">
           <span className="grid size-10 shrink-0 place-items-center rounded-full bg-sage text-forest-950">
             <CalendarCheck aria-hidden className="size-5" />
           </span>

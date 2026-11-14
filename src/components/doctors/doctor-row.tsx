@@ -74,14 +74,14 @@ export function DoctorRow({ doctor: d, flip = false }: { doctor: Doctor; flip?: 
           </div>
         )}
 
-        <div className="mt-5 flex flex-wrap gap-3 sm:mt-auto sm:pt-5">
+        <div className="mt-5 flex flex-nowrap gap-2 sm:mt-auto sm:gap-3 sm:pt-5">
           <Link
             href={`/doctors/${d.slug}`}
-            className="inline-block cursor-pointer rounded-full border border-forest-900/30 px-6 py-2.5 text-sm font-medium text-forest-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-900"
+            className="inline-block shrink-0 cursor-pointer whitespace-nowrap rounded-full border border-forest-900/30 px-4 py-2.5 text-sm sm:px-6 font-medium text-forest-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-900"
           >
             View Profile<span className="sr-only"> of {d.name}</span>
           </Link>
-          <CtaLink href={ctaHref} external className="min-h-0 px-6 py-2.5">Make an appointment</CtaLink>
+          <CtaLink href={ctaHref} external className="min-h-0 whitespace-nowrap px-4 py-2.5 text-sm sm:px-6">Make an appointment</CtaLink>
         </div>
       </div>
     </article>

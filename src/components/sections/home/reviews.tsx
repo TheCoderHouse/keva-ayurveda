@@ -52,9 +52,9 @@ export function Reviews() {
         ))}
       </div>
 
-      <ul id="rev-panel" role="tabpanel" aria-labelledby={`rev-tab-${active}`} className="mt-8 grid gap-4 lg:grid-cols-3 lg:gap-6">
+      <ul id="rev-panel" role="tabpanel" aria-labelledby={`rev-tab-${active}`} className="scrollbar-none -mx-4 mt-6 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 sm:-mx-6 sm:px-6 lg:mx-0 lg:mt-8 lg:grid lg:grid-cols-3 lg:gap-6 lg:overflow-visible lg:px-0 lg:pb-0">
         {p.reviews.map((r) => (
-          <li key={r.name} className="flex flex-col rounded-3xl border border-forest-900/10 bg-ivory p-6 shadow-soft">
+          <li key={r.name} className="flex w-[88%] shrink-0 snap-center flex-col rounded-3xl lg:w-auto border border-forest-900/10 bg-ivory p-5 shadow-soft lg:p-6">
             <div className="flex text-gold-500" role="img" aria-label={`${p.rating} out of ${p.scale} on ${p.platform}`}>
               {Array.from({ length: 5 }).map((_, s) => (
                 <Star key={s} aria-hidden className={cn("size-4", s < Math.round(p.rating) ? "fill-current" : "opacity-30")} />

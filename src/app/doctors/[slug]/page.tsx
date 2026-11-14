@@ -26,7 +26,7 @@ export default async function DoctorPage({ params }: PageProps<"/doctors/[slug]"
   return (
     <section className="py-8 lg:py-12">
       <Container>
-        <Link href="/doctors" className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-forest-900 hover:text-gold-700">
+        <Link href="/doctors" className="relative z-10 inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium text-forest-900 hover:text-gold-700">
           <ArrowLeft aria-hidden className="size-4" /> All doctors
         </Link>
 
@@ -37,7 +37,7 @@ export default async function DoctorPage({ params }: PageProps<"/doctors/[slug]"
             {d.cutout ? (
               <>
                 <div aria-hidden className="absolute bottom-0 left-1/2 size-[20rem] -translate-x-1/2 translate-y-1/6 rounded-full bg-[radial-gradient(closest-side,rgb(147_218_151/0.4),transparent)] blur-lg" />
-                <Image src={d.cutout} alt={`Portrait of ${d.name}`} width={1122} height={1402} priority sizes="(min-width:1024px) 22rem, 90vw" className="absolute inset-x-0 bottom-0 mx-auto h-[118%] max-h-none w-auto max-w-none -translate-y-[0%] [filter:drop-shadow(0_14px_16px_rgb(13_31_23/0.2))]" style={{ left: "50%", transform: "translateX(-50%)", right: "auto", marginInline: 0 }} />
+                <Image src={d.cutout} alt={`Portrait of ${d.name}`} width={1122} height={1402} priority sizes="(min-width:1024px) 22rem, 90vw" className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto h-[118%] max-h-none w-auto max-w-none -translate-y-[0%] [filter:drop-shadow(0_14px_16px_rgb(13_31_23/0.2))]" style={{ left: "50%", transform: "translateX(-50%)", right: "auto", marginInline: 0 }} />
               </>
             ) : (
               <div className="absolute inset-0 overflow-hidden rounded-3xl bg-sand">

@@ -69,6 +69,72 @@ function DesktopItem({ item }: { item: NavGroup }) {
   );
 }
 
+/** Mobile menu entry: the label is a link; entries with groups get a chevron that opens them, and each group (category) folds too. */
+function MobileItem({ item, onNavigate }: { item: NavGroup; onNavigate: () => void }) {
+  const [open, setOpen] = useState(false);
+  const groups = item.groups ?? [];
+  const id = `m-${item.label.replace(/\W+/g, "-").toLowerCase()}`;
+  return (
+    <li className="py-1">
+      {/* tapping empty space in a closed row opens it; an open one stays open (use the chevron to close). The label still navigates. */}
+      <div
+        className={cn("flex items-center justify-between", groups.length > 0 && "cursor-pointer")}
+        onClick={(e) => {
+          if (groups.length > 0 && !open && !(e.target as Element).closest("a, button")) setOpen(true);
+        }}
+      >
+        {/* with sub-sections the label only covers its text, so tapping empty space in the row opens the section instead of navigating */}
+        <NavAnchor item={item} onClick={onNavigate} className={cn("py-3 font-display text-xl text-forest-900", groups.length === 0 && "flex-1")}>{item.label}</NavAnchor>
+        {groups.length > 0 && (
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls={id}
+            aria-label={`${open ? "Collapse" : "Expand"} ${item.label}`}
+            onClick={() => setOpen((v) => !v)}
+            className="grid size-11 cursor-pointer place-items-center rounded-full text-forest-900 active:bg-sage-100"
+          >
+            <ChevronDown aria-hidden className={cn("size-5 transition-transform duration-300", open && "rotate-180")} />
+          </button>
+        )}
+      </div>
+      {groups.length > 0 && (
+        <div id={id} className="grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" style={{ gridTemplateRows: open ? "1fr" : "0fr" }} inert={!open}>
+          <div className="overflow-hidden">
+            <div className="space-y-1 pb-3">
+              {groups.map((g, gi) => {
+                const list = (
+                  <ul className="grid grid-cols-2 gap-x-4 gap-y-1 pb-2 pt-1">
+                    {g.items.map((l) => (
+                      <li key={l.label}>
+                        <NavAnchor item={l} onClick={onNavigate} className="flex items-start gap-2 rounded-lg px-1.5 py-1 text-[13px] leading-snug text-ink-soft active:bg-sage-100">
+                          <NavIcon label={l.label} group={g.title} className="mt-0.5 size-3.5 shrink-0 text-gold-700" />
+                          <span>{l.label}</span>
+                        </NavAnchor>
+                      </li>
+                    ))}
+                  </ul>
+                );
+                return g.title ? (
+                  <details key={g.title} name={`${id}-groups`} className="group/cat rounded-xl bg-sage-100/50 px-3">
+                    <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between text-[11px] font-medium uppercase tracking-[0.16em] text-gold-700 [&::-webkit-details-marker]:hidden">
+                      {g.title}
+                      <ChevronDown aria-hidden className="size-4 transition-transform duration-300 group-open/cat:rotate-180" />
+                    </summary>
+                    {list}
+                  </details>
+                ) : (
+                  <div key={gi}>{list}</div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+    </li>
+  );
+}
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -137,28 +203,7 @@ export function Header() {
       >
         <ul className="divide-y divide-forest-900/10">
           {mainNav.map((item) => (
-            <li key={item.label} className="py-4">
-              <NavAnchor item={item} onClick={() => setOpen(false)} className="font-display text-2xl text-forest-900">{item.label}</NavAnchor>
-              {item.groups && (
-                <div className="mt-3 space-y-4">
-                  {item.groups.map((g, gi) => (
-                    <div key={g.title ?? gi}>
-                      {g.title && <p className="mb-2 text-xs font-medium uppercase tracking-[0.18em] text-gold-700">{g.title}</p>}
-                      <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
-                        {g.items.map((l) => (
-                          <li key={l.label}>
-                            <NavAnchor item={l} onClick={() => setOpen(false)} className="flex items-start gap-2 rounded-lg px-1.5 py-1 text-sm text-ink-soft active:bg-sage-100">
-                              <NavIcon label={l.label} group={g.title} className="mt-0.5 size-3.5 shrink-0 text-gold-700" />
-                              <span>{l.label}</span>
-                            </NavAnchor>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </li>
+            <MobileItem key={item.label} item={item} onNavigate={() => setOpen(false)} />
           ))}
         </ul>
         <CtaLink href={ctaHref} external className="mt-8 w-full">Get an appointment</CtaLink>

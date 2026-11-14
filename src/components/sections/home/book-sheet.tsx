@@ -1,7 +1,6 @@
 "use client";
 
-import { CalendarCheck, ChevronRight, Phone } from "lucide-react";
-import { site, tel } from "@/content/site";
+import { CalendarCheck, ChevronRight } from "lucide-react";
 import { useBooking } from "@/components/layout/booking-popup";
 
 /**
@@ -27,13 +26,6 @@ export function BookSheet() {
           </span>
           <ChevronRight aria-hidden className="size-4 text-forest-900/70 transition-transform group-hover:translate-x-0.5" />
         </button>
-        <a
-          href={tel(site.phone.consult)}
-          aria-label="Call us"
-          className="grid size-12 shrink-0 cursor-pointer place-items-center rounded-2xl border border-forest-900/20 bg-ivory text-forest-900 transition-colors hover:bg-sage/40"
-        >
-          <Phone aria-hidden className="size-5" />
-        </a>
       </div>
 
     </>

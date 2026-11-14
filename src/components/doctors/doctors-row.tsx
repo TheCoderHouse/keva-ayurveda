@@ -52,10 +52,10 @@ export function DoctorsRow({ doctors }: { doctors: Doctor[] }) {
         onScroll={measure}
         tabIndex={0}
         aria-label="Doctors, scroll horizontally"
-        className="scrollbar-none -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-14 pt-20 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-1 [mask-image:linear-gradient(to_right,transparent,#000_4rem,#000_calc(100%-4rem),transparent)]"
+        className="scrollbar-none -mx-4 flex scroll-px-4 snap-x snap-mandatory gap-3 overflow-x-auto scroll-smooth px-4 pb-8 pt-14 sm:gap-4 sm:pb-14 sm:pt-20 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-1 [mask-image:linear-gradient(to_right,transparent,#000_4rem,#000_calc(100%-4rem),transparent)]"
       >
         {doctors.map((d) => (
-          <li key={d.slug} className="flex w-[15rem] shrink-0 snap-start flex-col sm:w-[15.5rem]">
+          <li key={d.slug} className="flex w-[calc(50%-0.375rem)] shrink-0 snap-start flex-col sm:w-[15.5rem]">
             <DoctorPopCard doctor={d} />
           </li>
         ))}

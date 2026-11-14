@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { ChevronDown, Plus } from "lucide-react";
+import type { Faq as FaqItem } from "@/types";
 import { Container } from "@/components/ui/container";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import { SectionTitle } from "@/components/ui/section-title";
@@ -46,6 +47,42 @@ function linkify(text: string) {
   );
 }
 
+/** One answer: two lines by default; "Read more" opens the full answer (lists and links included). */
+function FaqAnswer({ blocks }: { blocks: FaqItem["a"] }) {
+  const [full, setFull] = useState(false);
+  const plain = blocks.map((b) => (Array.isArray(b) ? b.join("; ") : b)).join(" ");
+  return (
+    <div className="mt-4 font-sans text-[15px] font-normal leading-relaxed text-forest-900/90">
+      {full ? (
+        <div className="space-y-3">
+          {blocks.map((block, i) =>
+            Array.isArray(block) ? (
+              <ul key={i} className="list-disc space-y-1.5 pl-5 marker:text-gold-500">
+                {block.map((li) => (
+                  <li key={li}>{li}</li>
+                ))}
+              </ul>
+            ) : (
+              <p key={i}>{linkify(block)}</p>
+            ),
+          )}
+        </div>
+      ) : (
+        <p className="line-clamp-2">{plain}</p>
+      )}
+      <button
+        type="button"
+        aria-expanded={full}
+        onClick={() => setFull((v) => !v)}
+        className="mt-2 inline-flex cursor-pointer items-center gap-1 text-sm font-semibold text-gold-700 hover:text-forest-900"
+      >
+        {full ? "Show less" : "Read more"}
+        <ChevronDown aria-hidden className={`size-4 transition-transform duration-300 ${full ? "rotate-180" : ""}`} />
+      </button>
+    </div>
+  );
+}
+
 /** FAQ's — all 16 questions and answers as published on kevaayurveda.com. One answer open at a time (native <details>). */
 export function Faq() {
   const [all, setAll] = useState(false);
@@ -69,19 +106,7 @@ export function Faq() {
                   {f.q}
                   <Plus aria-hidden className="size-5 shrink-0 text-gold-700 transition-transform duration-300 group-open:rotate-45" />
                 </summary>
-                <div className="mt-4 space-y-3 font-sans text-[15px] font-normal leading-relaxed text-forest-900/90">
-                  {f.a.map((block, i) =>
-                    Array.isArray(block) ? (
-                      <ul key={i} className="list-disc space-y-1.5 pl-5 marker:text-gold-500">
-                        {block.map((li) => (
-                          <li key={li}>{li}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p key={i}>{linkify(block)}</p>
-                    ),
-                  )}
-                </div>
+                <FaqAnswer blocks={f.a} />
               </details></StaggerItem>
             ))}
           </Stagger>
