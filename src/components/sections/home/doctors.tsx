@@ -12,7 +12,7 @@ import { founderDoctor as f, teamDoctors } from "@/content/home";
 /** "Our Panel Of Doctors": the founder gets a section of his own, then the rest of the team as cards (full panel on /doctors). */
 export function Doctors() {
   return (
-    <section aria-labelledby="doctors-title" className="relative isolate overflow-clip bg-sage/25 py-12 sm:py-16 lg:py-20">
+    <section aria-labelledby="doctors-title" className="relative isolate overflow-clip bg-white py-12 sm:py-16 lg:py-20">
       <Container>
         <Reveal slow>
           <SectionTitle id="doctors-title">Our Panel Of Doctors</SectionTitle>
@@ -77,7 +77,7 @@ export function Doctors() {
         {/* ───────── the team ───────── */}
         <Reveal slow className="mt-10 sm:mt-12">
           <h3 className="text-center font-display text-2xl font-semibold text-forest-900 sm:text-3xl">Meet the team</h3>
-          <div className="mt-1">
+          <div className="-mb-8 mt-1">
             <DoctorsRow doctors={teamDoctors} />
           </div>
         </Reveal>

@@ -71,9 +71,6 @@
   }
 }
 
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-.lenis-stopped { overflow: hidden; }
 
 @layer utilities {
   .bg-mesh {
@@ -110,21 +107,25 @@ html.lenis, html.lenis body { height: auto; }
   }
 }
 
-/* Scroll-reveal (toggled by <Reveal/>) */
-[data-reveal] {
-  opacity: 0;
-  transform: translateY(24px);
-  will-change: opacity, transform;
-  transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
-  transition-delay: var(--reveal-delay, 0ms);
+/* Page-load entrance: pure CSS so it runs on first paint (no JS, no flash). `backwards` fill means nothing is held afterwards,
+   so hover/translate utilities keep working. */
+@keyframes load-rise { from { opacity: 0; transform: translateY(22px); } }
+@keyframes load-drop { from { opacity: 0; transform: translateY(-16px); } }
+@keyframes load-zoom { from { opacity: 0; transform: scale(1.07); } }
+.load-rise, .load-drop, .load-zoom {
+  animation-duration: 0.95s;
+  animation-timing-function: var(--ease-premium);
+  animation-fill-mode: backwards;
+  animation-delay: var(--load-delay, 0ms);
 }
-[data-reveal="in"] {
-  opacity: 1;
-  transform: none;
-}
+.load-rise { animation-name: load-rise; }
+.load-drop { animation-name: load-drop; }
+.load-zoom { animation-name: load-zoom; animation-duration: 1.7s; }
+.load-d1 { --load-delay: 150ms; } .load-d2 { --load-delay: 300ms; } .load-d3 { --load-delay: 450ms; }
+.load-d4 { --load-delay: 600ms; } .load-d5 { --load-delay: 750ms; } .load-d6 { --load-delay: 900ms; }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .load-rise, .load-drop, .load-zoom { animation: none; }
   .animate-float, .animate-marquee { animation: none !important; }
   * { transition-duration: 0.01ms !important; }
 }

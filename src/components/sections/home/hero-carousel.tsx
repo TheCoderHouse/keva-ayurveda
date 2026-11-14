@@ -46,7 +46,7 @@ export function HeroCarousel() {
             className={cn("absolute inset-0 transition-opacity duration-1000 ease-in-out", active ? "opacity-100" : "pointer-events-none opacity-0")}
           >
             {/* below lg the photo sits at its natural 1832:859 ratio (no crop/zoom) with the copy underneath; lg+ goes full-bleed */}
-            <div className="absolute inset-x-0 top-0 aspect-[1832/859] lg:inset-0 lg:aspect-auto">
+            <div className="load-zoom absolute inset-x-0 top-0 aspect-[1832/859] lg:inset-0 lg:aspect-auto">
               <Image
                 src={s.image}
                 alt={s.alt}
@@ -61,17 +61,17 @@ export function HeroCarousel() {
             <div aria-hidden className="absolute inset-0 bg-gradient-to-r from-ivory/95 via-ivory/70 via-45% to-ivory/0 lg:via-ivory/45 lg:via-30% lg:to-60%" />
 
             <div className={cn("relative mx-auto flex h-full w-full max-w-7xl flex-col justify-center px-4 pb-5 pt-0 transition-opacity sm:pb-10 lg:justify-center lg:pt-16 sm:px-6 lg:px-10 lg:pb-24", active ? "opacity-100 delay-500 duration-500" : "opacity-0 duration-300")}>
-              <p className="mb-1.5 inline-flex w-fit items-center gap-1.5 rounded-full border border-forest-900/15 bg-white/60 px-2 py-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] sm:mb-4 sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:tracking-[0.2em] text-forest-900 backdrop-blur-md">
+              <p className="load-rise load-d2 mb-1.5 inline-flex w-fit items-center gap-1.5 rounded-full border border-forest-900/15 bg-white/60 px-2 py-0.5 text-[7px] font-semibold uppercase tracking-[0.14em] sm:mb-4 sm:gap-2 sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:tracking-[0.2em] text-forest-900 backdrop-blur-md">
                 <span aria-hidden className="size-1.5 rounded-full bg-gold-500" />
                 {s.kicker}
               </p>
               {/* one <h1> per page: only the visible slide is the heading */}
               {active ? (
-                <h1 className="max-w-[46%] text-balance font-display text-[0.8rem] font-semibold leading-[1.15] tracking-tight text-forest-950 sm:max-w-[46%] sm:text-3xl lg:max-w-[24rem] lg:text-[2.7rem]">{s.title}</h1>
+                <h1 className="load-rise load-d3 max-w-[46%] text-balance font-display text-[0.8rem] font-semibold leading-[1.15] tracking-tight text-forest-950 sm:max-w-[46%] sm:text-3xl lg:max-w-[24rem] lg:text-[2.7rem]">{s.title}</h1>
               ) : (
                 <p className="max-w-[46%] text-balance font-display text-[0.8rem] font-semibold leading-[1.15] tracking-tight text-forest-950 sm:max-w-[46%] sm:text-3xl lg:max-w-[24rem] lg:text-[2.7rem]">{s.title}</p>
               )}
-              <div className="mt-2 sm:mt-5">
+              <div className="load-rise load-d4 mt-2 sm:mt-5">
                 {external ? (
                   <a
                     href={ctaHref}
@@ -100,7 +100,7 @@ export function HeroCarousel() {
       })}
 
       {/* Controls */}
-      <div className="absolute inset-x-0 bottom-0 z-10 lg:bottom-24">
+      <div className="load-rise load-d5 absolute inset-x-0 bottom-0 z-10 lg:bottom-24">
         <div className="mx-auto flex w-full max-w-7xl items-center gap-5 px-4 sm:px-6 lg:px-10">
           <div className="flex items-center gap-2" role="tablist" aria-label="Choose slide">
             {heroSlides.map((s, idx) => (

@@ -41,7 +41,8 @@ function DesktopItem({ item }: { item: NavGroup }) {
             n >= 4 ? "left-1/2 -translate-x-[38%]" : n >= 2 ? "left-0" : "right-0",
           )}
         >
-          <div data-lenis-prevent className={cn("grid max-h-[50dvh] gap-x-6 gap-y-8 overflow-y-auto overscroll-contain rounded-3xl border border-forest-900/10 bg-ivory p-6 shadow-lift [scrollbar-color:var(--color-sage)_transparent] [scrollbar-width:thin]", panelCols(n))}>
+          <div className="rounded-3xl border border-forest-900/10 bg-ivory p-3 shadow-lift">
+          <div data-lenis-prevent className={cn("grid max-h-[50dvh] gap-x-8 gap-y-8 overflow-y-auto overscroll-contain rounded-2xl px-5 pb-6 pt-5 [scrollbar-color:var(--color-sage)_transparent] [scrollbar-width:thin]", panelCols(n))}>
             {item.groups!.map((g, gi) => (
               <div key={g.title ?? gi}>
                 {g.title && <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-gold-700">{g.title}</p>}
@@ -60,6 +61,7 @@ function DesktopItem({ item }: { item: NavGroup }) {
                 </ul>
               </div>
             ))}
+          </div>
           </div>
         </div>
       )}
@@ -87,7 +89,7 @@ export function Header() {
 
   return (
     <>
-    <header className={cn("sticky top-0 z-50 transition-all duration-500", scrolled ? "bg-ivory/80 shadow-soft backdrop-blur-xl" : "bg-ivory/70 backdrop-blur-lg")}>
+    <header className={cn("load-drop sticky top-0 z-50 transition-all duration-500", scrolled ? "bg-ivory/80 shadow-soft backdrop-blur-xl" : "bg-ivory/70 backdrop-blur-lg")}>
       <div className="hidden border-b border-forest-900/10 bg-sage-100 text-xs text-forest-900 lg:block">
         <Container className="flex h-8 items-center justify-between">
           <p>We are open on {site.hours}</p>
@@ -127,6 +129,7 @@ export function Header() {
       <div
         id="mobile-menu"
         data-lenis-prevent
+       
         className={cn(
           "fixed inset-x-0 bottom-0 top-0 z-40 pt-20 overflow-y-auto bg-ivory px-5 pb-10 transition-all duration-500 xl:hidden",
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-3 opacity-0",

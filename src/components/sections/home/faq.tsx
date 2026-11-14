@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Container } from "@/components/ui/container";
-import { Reveal } from "@/components/ui/reveal";
+import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import { SectionTitle } from "@/components/ui/section-title";
 import { faqs } from "@/content/home";
 
@@ -62,9 +62,9 @@ export function Faq() {
         </Reveal>
 
         <Reveal delay={120} className="mx-auto mt-10 max-w-6xl">
-          <div className="grid items-start gap-x-12 lg:grid-cols-2">
+          <Stagger gap={0.05} className="grid items-start gap-x-12 lg:grid-cols-2">
             {shown.map((f) => (
-              <details key={f.q} name="faq" className="faq-item group border-b border-forest-900/20 py-5">
+              <StaggerItem key={f.q} y={16}><details name="faq" className="faq-item group border-b border-forest-900/20 py-5">
                 <summary className="flex cursor-pointer select-none list-none items-center justify-between gap-6 font-display text-[15px] font-medium leading-snug text-forest-900 sm:text-lg lg:text-xl [&::-webkit-details-marker]:hidden">
                   {f.q}
                   <Plus aria-hidden className="size-5 shrink-0 text-gold-700 transition-transform duration-300 group-open:rotate-45" />
@@ -82,9 +82,9 @@ export function Faq() {
                     ),
                   )}
                 </div>
-              </details>
+              </details></StaggerItem>
             ))}
-          </div>
+          </Stagger>
           <div className="mt-8 text-center">
             <button
               type="button"

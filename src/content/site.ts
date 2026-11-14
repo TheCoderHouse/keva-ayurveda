@@ -16,8 +16,12 @@ export const site = {
   phone: { consult: "+91 8050080058", treatment: "+91 8050056033" },
   whatsapp: { delivery: "+91 9071208079", deliveryLink: "https://wa.me/919071208079" },
   youtube: "https://www.youtube.com/channel/UCBdIflvPYc4fmk7wXO6X6rA",
+  /** Social profiles shown in the footer; an empty string hides that icon until the real URL is added. */
+  social: { facebook: "", instagram: "", twitter: "", youtube: "https://www.youtube.com/channel/UCBdIflvPYc4fmk7wXO6X6rA" },
   youtubeVideos: "https://www.youtube.com/@kevaayurveda6054/videos",
   yoga: "https://aurevayoga.com/kevaayurveda",
+  /** Keva online store. PLACEHOLDER address: replace with the real store URL. */
+  store: "https://store.kevaayurveda.com",
   about:
     "Keva Ayurveda began its operation in 2011 with a vision to provide Authentic, Affordable & Accessible Ayurveda for all. Keva Ayurveda has been rated as The Best Ayurveda Clinic & Hospital in Bangalore and also considered as the most reliable on the basis of reviews and recommendations on Practo, Lybrate, Google, and other online health portals. Patients across India, Malaysia, Dubai, Singapore, Sri Lanka, USA, UK, Europe, visit Keva Ayurveda, Bangalore to avail best in class Ayurveda treatments.",
 } as const;

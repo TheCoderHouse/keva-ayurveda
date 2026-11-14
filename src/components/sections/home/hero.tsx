@@ -15,10 +15,10 @@ export function Hero() {
         <HeroCarousel />
       </div>
       {/* Desktop: the trust stats sit inside the bottom of the banner, so no page background shows beneath the hero. Mobile / tablet: compact action row. On desktop there is no inline form: every appointment CTA opens the booking popup. */}
-      <Container className="order-2 pt-3 lg:hidden">
+      <Container className="load-rise load-d5 order-2 pt-3 lg:hidden">
         <BookSheet />
       </Container>
-      <Container className="relative z-30 order-3 pb-4 pt-3 lg:absolute lg:inset-x-0 lg:bottom-0 lg:translate-y-1/2 lg:p-0 lg:px-10">
+      <Container className="load-rise load-d6 relative z-30 order-3 pb-4 pt-3 lg:absolute lg:inset-x-0 lg:bottom-0 lg:translate-y-1/2 lg:p-0 lg:px-10">
         <dl className="grid grid-cols-2 overflow-hidden rounded-2xl border border-forest-900/10 bg-sage-100 text-forest-950 shadow-soft sm:rounded-3xl lg:grid-cols-5">
           {trustStats.map((s, i) => {
             const Icon = icons[s.icon];

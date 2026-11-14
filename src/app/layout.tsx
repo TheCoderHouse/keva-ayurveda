@@ -4,7 +4,6 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { BookingProvider } from "@/components/layout/booking-popup";
-import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { FloatingActions } from "@/components/layout/floating-actions";
 import { site } from "@/content/site";
 
@@ -40,7 +39,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <SmoothScroll />
         <BookingProvider>
           <Header />
           <main id="main">{children}</main>

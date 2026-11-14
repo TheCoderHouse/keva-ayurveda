@@ -43,9 +43,8 @@ export function Essentials() {
 
   return (
     <section aria-labelledby="essentials-title" className="relative isolate overflow-clip py-12 sm:py-16 lg:py-24">
-      {/* same treatment as the category section: light photo under a pale wash, pinned (parallax) on desktop */}
-      <div aria-hidden className="absolute inset-0 -z-20 bg-cover bg-center motion-reduce:bg-scroll lg:bg-fixed" style={{ backgroundImage: "url('/images/quality.webp')" }} />
-      <div aria-hidden className="absolute inset-0 -z-10 bg-ivory/80" />
+      {/* clean backdrop: white with a soft sage glow in the top-left and bottom-right corners only, so the cards (not a photo) carry the section */}
+      <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_0%_0%,rgb(181_217_138/0.3),transparent_28rem),radial-gradient(circle_at_100%_100%,rgb(147_218_151/0.3),transparent_28rem)] bg-white" />
       <Container>
         <Reveal>
           <SectionTitle id="essentials-title">Ayurveda Essentials</SectionTitle>
@@ -102,26 +101,30 @@ export function Essentials() {
                   <article
                     onClick={() => !on && !drag.current?.moved && go(i)}
                     className={cn(
-                      "relative flex h-full flex-col items-center overflow-hidden rounded-[2rem] border px-6 py-7 text-center transition-[box-shadow,border-color] duration-700 sm:px-8 sm:py-9",
-                      on ? "border-white/80 shadow-[0_30px_60px_-24px_rgb(40_110_60/0.55)]" : "cursor-pointer border-forest-900/10 shadow-soft",
+                      "relative isolate flex h-full flex-col items-center overflow-hidden rounded-[2rem] border bg-white px-6 py-7 text-center transition-[box-shadow,border-color] duration-700 sm:px-8 sm:py-9",
+                      on ? "border-sage/40 shadow-[0_40px_70px_-28px_rgb(13_31_23/0.7)]" : "cursor-pointer border-forest-900/10 shadow-soft",
                     )}
                   >
-                    {/* premium gradient: a soft one always, a richer one fades in when the card takes the spotlight */}
-                    <span aria-hidden className="absolute inset-0 -z-20 bg-gradient-to-br from-white via-sage-100/80 to-mint/60" />
-                    <span aria-hidden className={cn("absolute inset-0 -z-10 bg-gradient-to-br from-sage-100 via-mint to-sage transition-opacity duration-700", on ? "opacity-100" : "opacity-0")} />
-                    <span aria-hidden className="absolute -right-10 -top-10 -z-10 size-40 rounded-full bg-white/50 blur-2xl" />
-                    <span aria-hidden className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
+                    {/* the spotlight card is deep forest green (white text); the others stay light and quiet */}
+                    <span aria-hidden className={cn("absolute inset-0 -z-20 bg-gradient-to-br from-forest-900 via-forest-900 to-forest-950 transition-opacity duration-700", on ? "opacity-100" : "opacity-0")} />
+                    <span aria-hidden className={cn("absolute -right-12 -top-12 -z-10 size-48 rounded-full bg-sage/30 blur-3xl transition-opacity duration-700", on ? "opacity-100" : "opacity-0")} />
+                    <span aria-hidden className={cn("absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-sage to-transparent transition-opacity duration-700", on ? "opacity-100" : "opacity-0")} />
 
-                    <span className={cn("grid size-16 shrink-0 place-items-center rounded-full text-forest-900 transition-colors duration-700 sm:size-[4.5rem]", on ? "bg-white shadow-soft" : "bg-sage/60")}>
+                    <span className={cn("absolute right-5 top-5 font-sans text-xs font-medium tabular-nums tracking-[0.18em] transition-colors duration-700", on ? "text-sage" : "text-forest-900/40")}>{String(i + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span>
+
+                    <span className={cn("grid size-16 shrink-0 place-items-center rounded-full transition-colors duration-700 sm:size-[4.5rem]", on ? "bg-sage text-forest-950" : "bg-sage-100 text-forest-900")}>
                       <Icon aria-hidden className="size-7 sm:size-8" strokeWidth={1.4} />
                     </span>
-                    <h3 className="mt-4 font-display text-2xl text-forest-900 sm:text-3xl">{e.title}</h3>
-                    <p className="mt-3 line-clamp-4 flex-1 font-sans text-[15px] leading-relaxed text-forest-900/75">{e.text}</p>
+                    <h3 className={cn("mt-4 font-display text-2xl font-semibold transition-colors duration-700 sm:text-3xl", on ? "text-white" : "text-forest-900")}>{e.title}</h3>
+                    <p className={cn("mt-3 line-clamp-4 flex-1 font-sans text-[15px] leading-relaxed transition-colors duration-700", on ? "text-white/80" : "text-forest-900/70")}>{e.text}</p>
                     <Link
                       href={e.href}
                       tabIndex={on ? 0 : -1}
                       draggable={false}
-                      className="mt-5 cursor-pointer rounded-full bg-forest-900/90 px-5 py-2 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-forest-950 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-forest-900"
+                      className={cn(
+                        "mt-5 cursor-pointer rounded-full px-5 py-2 font-sans text-xs font-semibold uppercase tracking-[0.2em] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage",
+                        on ? "bg-sage text-forest-950 hover:bg-white" : "border border-forest-900/20 text-forest-900 hover:bg-sage",
+                      )}
                     >
                       Read more<span className="sr-only"> about {e.title}</span>
                     </Link>

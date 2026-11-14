@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/cn";
 
-/** Fades/slides children in once when scrolled into view. Content is visible without JS-less flash via data attribute. */
+export const EASE = [0.22, 1, 0.36, 1] as const;
+
+/** Scroll-triggered entrance (Motion): children fade and rise (or slide in from the right) once they enter the viewport. Honors reduced motion. */
 export function Reveal({
   children,
   delay = 0,
@@ -13,53 +15,68 @@ export function Reveal({
   className,
 }: {
   children: React.ReactNode;
+  /** ms */
   delay?: number;
-  /** longer, deeper rise (about 1.6s) for showpiece sections */
+  /** longer, deeper rise for showpiece sections */
   slow?: boolean;
-  /** direction the content travels in from */
   from?: "bottom" | "right";
-  /** replay every time it scrolls into view (resets once fully out of view) */
+  /** replay every time it scrolls into view */
   repeat?: boolean;
   className?: string;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.intersectionRatio >= 0.12 && entry.isIntersecting) {
-          setShown(true);
-          if (!repeat) io.disconnect();
-        } else if (repeat && !entry.isIntersecting) {
-          setShown(false);
-        }
-      },
-      { threshold: [0, 0.12], rootMargin: "0px 0px -8% 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [repeat]);
-
+  const reduce = useReducedMotion();
+  const hidden = from === "right" ? { opacity: 0, x: 72 } : { opacity: 0, y: slow ? 40 : 28 };
   return (
-    <div
-      ref={ref}
-      data-reveal={shown ? "in" : "out"}
-      style={
-        {
-          "--reveal-delay": `${delay}ms`,
-          // slow variant: deeper start, longer ease (set inline so it never depends on stylesheet order)
-          ...(slow && { transitionDuration: "1.1s" }),
-          ...((slow || from === "right") && {
-            transform: shown ? "none" : from === "right" ? "translateX(72px)" : "translateY(40px)",
-          }),
-        } as React.CSSProperties
-      }
+    <motion.div
+      initial={reduce ? false : hidden}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: !repeat, amount: 0.12, margin: "0px 0px -8% 0px" }}
+      transition={{ duration: slow ? 1.1 : 0.8, delay: delay / 1000, ease: EASE }}
       className={cn(className)}
     >
       {children}
-    </div>
+    </motion.div>
+  );
+}
+
+/** Parent that staggers its <StaggerItem/> children as it scrolls into view. */
+export function Stagger({
+  children,
+  className,
+  gap = 0.09,
+  delay = 0,
+  as = "div",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  /** seconds between children */
+  gap?: number;
+  delay?: number;
+  as?: "div" | "ul" | "ol";
+}) {
+  const reduce = useReducedMotion();
+  const M = motion[as];
+  return (
+    <M
+      initial={reduce ? false : "hidden"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.1, margin: "0px 0px -6% 0px" }}
+      variants={{ hidden: {}, show: { transition: { staggerChildren: gap, delayChildren: delay } } }}
+      className={className}
+    >
+      {children}
+    </M>
+  );
+}
+
+export function StaggerItem({ children, className, as = "div", y = 28 }: { children: React.ReactNode; className?: string; as?: "div" | "li"; y?: number }) {
+  const M = motion[as];
+  return (
+    <M
+      variants={{ hidden: { opacity: 0, y, scale: 0.97 }, show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: EASE } } }}
+      className={className}
+    >
+      {children}
+    </M>
   );
 }

@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import { SectionTitle } from "@/components/ui/section-title";
 
 /**
@@ -22,9 +23,9 @@ const hasFile = (f: string) => fs.existsSync(path.join(process.cwd(), "public", 
 
 function BrandCard({ b }: { b: (typeof brands)[number] }) {
   return (
-    <div className="grid h-28 w-44 shrink-0 place-items-center rounded-2xl border border-forest-900/10 bg-white/80 px-5 shadow-soft transition-transform duration-500 hover:-translate-y-1 sm:h-32 sm:w-56">
+    <div className="grid h-24 w-40 shrink-0 place-items-center px-4 transition-transform duration-500 hover:-translate-y-1 sm:h-28 sm:w-52">
       {hasFile(b.logo) ? (
-        <Image src={`/associations/${b.logo}`} alt={b.name} width={180} height={90} className="max-h-16 w-auto object-contain sm:max-h-20" />
+        <Image src={`/associations/${b.logo}`} alt={b.name} width={180} height={90} className="max-h-14 w-auto object-contain mix-blend-multiply sm:max-h-[4.5rem]" />
       ) : (
         <span className="text-center leading-tight">
           <span className="block font-display text-2xl font-bold tracking-tight sm:text-3xl" style={{ color: b.color }}>{b.name}</span>
@@ -39,10 +40,13 @@ export function Associations() {
   return (
     <section aria-labelledby="assoc-title" className="overflow-hidden bg-sage-100/50 py-12 sm:py-16 lg:py-20">
       <Container>
-        <SectionTitle id="assoc-title">Our Association</SectionTitle>
-        <p className="mx-auto mt-3 max-w-xl text-center text-base text-ink-soft sm:text-lg">Recognised, accredited and trusted by leading institutions.</p>
+        <Reveal>
+          <SectionTitle id="assoc-title">Our Association</SectionTitle>
+          <p className="mx-auto mt-3 max-w-xl text-center text-base text-ink-soft sm:text-lg">Recognised, accredited and trusted by leading institutions.</p>
+        </Reveal>
       </Container>
 
+      <Reveal delay={200}>
       <div
         className="group mt-8 sm:mt-10 [mask-image:linear-gradient(to_right,transparent,#000_8%,#000_92%,transparent)]"
         role="region"
@@ -59,6 +63,7 @@ export function Associations() {
           ))}
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }
