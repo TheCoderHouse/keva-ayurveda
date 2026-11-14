@@ -51,9 +51,9 @@ export function Reveal({
         {
           "--reveal-delay": `${delay}ms`,
           // slow variant: deeper start, longer ease (set inline so it never depends on stylesheet order)
-          ...(slow && { transitionDuration: "1.6s" }),
+          ...(slow && { transitionDuration: "1.1s" }),
           ...((slow || from === "right") && {
-            transform: shown ? "none" : from === "right" ? "translateX(72px)" : "translateY(64px)",
+            transform: shown ? "none" : from === "right" ? "translateX(72px)" : "translateY(40px)",
           }),
         } as React.CSSProperties
       }

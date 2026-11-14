@@ -30,9 +30,20 @@ export default async function DoctorPage({ params }: PageProps<"/doctors/[slug]"
           <ArrowLeft aria-hidden className="size-4" /> All doctors
         </Link>
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-[22rem_1fr] lg:gap-12">
-          <div className="relative aspect-square w-full max-w-sm overflow-hidden rounded-3xl bg-sand shadow-soft lg:max-w-none">
-            <Image src={d.photo} alt={`Portrait of ${d.name}`} fill priority sizes="(min-width:1024px) 22rem, 90vw" className="object-cover object-top" />
+        <div className="mt-6 grid gap-8 lg:mt-14 lg:grid-cols-[22rem_1fr] lg:gap-12">
+          {/* the doctor stands on a card and rises out of its top */}
+          <div className="relative mt-8 aspect-[4/4.6] w-full max-w-sm lg:mt-0 lg:max-w-none">
+            <div aria-hidden className="absolute inset-x-0 bottom-0 h-[60%] rounded-3xl bg-gradient-to-b from-ivory via-sage-100/60 to-sage-100 shadow-soft" />
+            {d.cutout ? (
+              <>
+                <div aria-hidden className="absolute bottom-0 left-1/2 size-[20rem] -translate-x-1/2 translate-y-1/6 rounded-full bg-[radial-gradient(closest-side,rgb(147_218_151/0.4),transparent)] blur-lg" />
+                <Image src={d.cutout} alt={`Portrait of ${d.name}`} width={1122} height={1402} priority sizes="(min-width:1024px) 22rem, 90vw" className="absolute inset-x-0 bottom-0 mx-auto h-[118%] max-h-none w-auto max-w-none -translate-y-[0%] [filter:drop-shadow(0_14px_16px_rgb(13_31_23/0.2))]" style={{ left: "50%", transform: "translateX(-50%)", right: "auto", marginInline: 0 }} />
+              </>
+            ) : (
+              <div className="absolute inset-0 overflow-hidden rounded-3xl bg-sand">
+                <Image src={d.photo} alt={`Portrait of ${d.name}`} fill priority sizes="(min-width:1024px) 22rem, 90vw" className="object-cover object-top" />
+              </div>
+            )}
           </div>
 
           <div>

@@ -1,20 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Jost } from "next/font/google";
+import { Outfit, Work_Sans } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { BookingProvider } from "@/components/layout/booking-popup";
+import { SmoothScroll } from "@/components/layout/smooth-scroll";
 import { FloatingActions } from "@/components/layout/floating-actions";
 import { site } from "@/content/site";
 
-const display = Cormorant_Garamond({
-  variable: "--font-cormorant",
+const display = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const sans = Jost({
-  variable: "--font-jost",
+const sans = Work_Sans({
+  variable: "--font-work",
   subsets: ["latin"],
   display: "swap",
 });
@@ -26,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: { title: site.name, description: site.description, type: "website", locale: "en_IN" },
 };
 
-export const viewport: Viewport = { themeColor: "#1b3328" };
+export const viewport: Viewport = { themeColor: "#12281e" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -38,10 +40,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-        <FloatingActions />
+        <SmoothScroll />
+        <BookingProvider>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+          <FloatingActions />
+        </BookingProvider>
       </body>
     </html>
   );

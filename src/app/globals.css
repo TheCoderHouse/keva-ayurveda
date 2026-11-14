@@ -3,30 +3,31 @@
 @import "shadcn/tailwind.css";
 
 /* Design tokens — Keva Ayurveda
-   Calm, earthy, premium. Forest + ivory + turmeric gold. */
+   Light theme: ECF4E8 / CBF3BB / ABE7B2 / 93DA97 greens with deep-forest text. */
 @theme {
   /* 60 / 30 / 10 palette */
-  --color-ivory: #e8e9ef;        /* 60% — surfaces */
-  --color-cream: #dcdde6;        /* tint of 60% */
-  --color-sand: #cdcfda;         /* deeper tint of 60% */
-  --color-sage: #a9b887;         /* 30% — secondary */
-  --color-sage-100: #d4dcc0;     /* tint of 30% */
-  --color-forest-950: #2e2d28;   /* 10% — text & accents */
-  --color-forest-900: #2e2d28;
-  --color-forest-800: #3e3d36;
-  --color-forest-700: #55544b;
-  --color-gold-300: #a9b887;     /* accent on dark = sage */
-  --color-gold-500: #7d8d5b;
-  --color-gold-700: #55663a;     /* accent text on light (AA) */
-  --color-clay: #55544b;
-  --color-ink: #2e2d28;
-  --color-ink-soft: #55544b;
+  --color-ivory: #ecf4e8;        /* 60% — warm surfaces */
+  --color-cream: #e1efdb;        /* tint of 60% */
+  --color-sand: #abe7b2;         /* deeper tint of 60% */
+  --color-sage: #93da97;         /* 30% — fresh green */
+  --color-sage-100: #cbf3bb;
+  --color-mint: #abe7b2;     /* tint of 30% */
+  --color-forest-950: #0d1f17;   /* 10% — text & accents */
+  --color-forest-900: #12281e;
+  --color-forest-800: #1b3a2b;
+  --color-forest-700: #2c5540;
+  --color-gold-300: #93da97;     /* accent on dark = sage */
+  --color-gold-500: #5e8f36;
+  --color-gold-700: #3c6b22;     /* accent text on light (AA) */
+  --color-clay: #3f5547;
+  --color-ink: #0d1f17;
+  --color-ink-soft: #3f5547;
 
-  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-  --font-sans: var(--font-jost), "Jost", system-ui, sans-serif;
+  --font-display: var(--font-outfit), "Outfit", system-ui, sans-serif;
+  --font-sans: var(--font-work), "Work Sans", system-ui, sans-serif;
 
-  --shadow-soft: 0 1px 2px rgb(46 45 40 / 0.05), 0 12px 32px -12px rgb(46 45 40 / 0.16);
-  --shadow-lift: 0 2px 4px rgb(46 45 40 / 0.06), 0 28px 56px -20px rgb(46 45 40 / 0.26);
+  --shadow-soft: 0 1px 2px rgb(13 31 23 / 0.05), 0 12px 32px -12px rgb(13 31 23 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(13 31 23 / 0.06), 0 28px 56px -20px rgb(13 31 23 / 0.32);
 
   --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -44,7 +45,6 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 5rem;
   }
   body {
@@ -57,8 +57,8 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 500;
-    letter-spacing: -0.01em;
-    line-height: 1.05;
+    letter-spacing: -0.03em;
+    line-height: 1.04;
   }
   :focus-visible {
     outline: 2px solid var(--color-gold-500);
@@ -71,7 +71,28 @@
   }
 }
 
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis-stopped { overflow: hidden; }
+
 @layer utilities {
+  .bg-mesh {
+    background:
+      radial-gradient(60rem 30rem at 10% -10%, rgb(147 218 151 / 0.45), transparent 60%),
+      radial-gradient(50rem 28rem at 100% 0%, rgb(171 231 178 / 0.5), transparent 60%),
+      var(--color-ivory);
+  }
+  .glass {
+    background: rgb(251 250 245 / 0.62);
+    backdrop-filter: blur(18px) saturate(1.4);
+    border: 1px solid rgb(255 255 255 / 0.55);
+  }
+  .text-gradient {
+    background: linear-gradient(110deg, var(--color-forest-900), var(--color-gold-500) 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
   .grain::after {
     content: "";
     position: absolute;
@@ -93,6 +114,7 @@
 [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
+  will-change: opacity, transform;
   transition: opacity 0.9s var(--ease-premium), transform 0.9s var(--ease-premium);
   transition-delay: var(--reveal-delay, 0ms);
 }
@@ -102,7 +124,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
   .animate-float, .animate-marquee { animation: none !important; }
   * { transition-duration: 0.01ms !important; }
@@ -143,25 +164,25 @@
 }
 
 :root {
-  --background: #e8e9ef;
-  --foreground: #2e2d28;
-  --card: #f4f4f8;
-  --card-foreground: #2e2d28;
-  --popover: #f4f4f8;
-  --popover-foreground: #2e2d28;
-  --primary: #2e2d28;
-  --primary-foreground: #e8e9ef;
-  --secondary: #a9b887;
-  --secondary-foreground: #2e2d28;
-  --muted: #dcdde6;
-  --muted-foreground: #55544b;
-  --accent: #d4dcc0;
-  --accent-foreground: #2e2d28;
+  --background: #ecf4e8;
+  --foreground: #0d1f17;
+  --card: #f6faf3;
+  --card-foreground: #0d1f17;
+  --popover: #f6faf3;
+  --popover-foreground: #0d1f17;
+  --primary: #93da97;
+  --primary-foreground: #0d1f17;
+  --secondary: #abe7b2;
+  --secondary-foreground: #0d1f17;
+  --muted: #dcebd6;
+  --muted-foreground: #3f5547;
+  --accent: #cbf3bb;
+  --accent-foreground: #0d1f17;
   --destructive: #a3402f;
-  --border: rgb(46 45 40 / 0.15);
-  --input: rgb(46 45 40 / 0.15);
-  --ring: #a9b887;
-  --radius: 0.75rem;
+  --border: rgb(13 31 23 / 0.14);
+  --input: rgb(13 31 23 / 0.14);
+  --ring: #5e8f36;
+  --radius: 1rem;
 }
 
 /* Hero: on desktop the focal photo runs from the container's left edge to where the booking form begins
@@ -191,4 +212,14 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .leaf-fall { animation-name: none; opacity: 0.4; transform: translateY(40cqh); }
+}
+
+@keyframes doc-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes essentials-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }

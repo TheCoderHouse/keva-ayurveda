@@ -34,7 +34,11 @@ export type Doctor = {
   name: string;
   role: string;
   photo: string;
+  /** transparent full-figure cut-out used on the home page "panel" stage */
+  cutout?: string;
   credentials?: string;
+  /** a few short specialty tags for the home-page cards, taken from the doctor's published profile */
+  specialties?: string[];
   experience?: string;
   /** Optional per-doctor figure, e.g. "5,000+". When absent the clinic-wide figure is shown. */
   patients?: string;

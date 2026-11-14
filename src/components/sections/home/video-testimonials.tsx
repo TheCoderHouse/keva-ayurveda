@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, Leaf, Play } from "lucide-react";
 import { videoTestimonials } from "@/content/home";
 
 function VideoCard({ id, index }: { id: string; index: number }) {
@@ -20,9 +20,26 @@ function VideoCard({ id, index }: { id: string; index: number }) {
       ) : (
         <button type="button" onClick={() => setPlaying(true)} aria-label={`Play patient testimonial ${index + 1}`} className="group absolute inset-0 cursor-pointer">
           <Image src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" fill sizes="(min-width:1024px) 30vw, (min-width:640px) 45vw, 80vw" className="object-cover" />
-          <span aria-hidden className="absolute inset-0 bg-forest-950/20" />
-          <span className="absolute left-1/2 top-1/2 grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-ivory text-forest-900 shadow-lift">
+          {/* brand grade: forest tint over the busy backdrop, dark foot for the caption, sage glow behind the play button */}
+          <span aria-hidden className="absolute inset-0 bg-forest-900/25 mix-blend-multiply" />
+          <span aria-hidden className="absolute inset-0 bg-gradient-to-t from-forest-950/90 via-forest-950/25 via-45% to-forest-950/30" />
+          <span aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgb(181_217_138/0.35),transparent_55%)] opacity-70 transition-opacity duration-500 group-hover:opacity-100" />
+
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-ivory/90 py-1 pl-1 pr-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-forest-900 backdrop-blur">
+            <span className="grid size-5 place-items-center rounded-full bg-sage text-forest-950"><Leaf aria-hidden className="size-3" strokeWidth={1.8} /></span>
+            Keva Ayurveda
+          </span>
+
+          <span className="absolute left-1/2 top-[44%] grid size-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-sage text-forest-950 shadow-[0_0_0_8px_rgb(245_242_234/0.25)] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110">
             <Play aria-hidden className="ml-0.5 size-5 fill-current" />
+          </span>
+
+          <span className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 p-3 text-left text-white sm:p-4">
+            <span>
+              <span className="block text-[11px] font-semibold uppercase tracking-[0.18em] text-sage">Patient story</span>
+              <span className="block font-display text-base font-semibold leading-tight sm:text-lg">Real people, real recovery</span>
+            </span>
+            <span className="shrink-0 rounded-full border border-white/40 px-2.5 py-1 text-[11px] font-medium tabular-nums">{String(index + 1).padStart(2, "0")}</span>
           </span>
         </button>
       )}
@@ -65,7 +82,7 @@ export function VideoTestimonials() {
             onClick={() => scrollBy(dir)}
             disabled={dir === -1 ? edge.start : edge.end}
             aria-label={dir === -1 ? "Previous videos" : "Next videos"}
-            className="grid size-11 cursor-pointer place-items-center rounded-full border border-forest-900/25 bg-white/60 text-forest-900 transition-colors duration-300 hover:bg-forest-900 hover:text-ivory disabled:cursor-default disabled:opacity-35 disabled:hover:bg-white/60 disabled:hover:text-forest-900"
+            className="grid size-11 cursor-pointer place-items-center rounded-full border border-forest-900/25 bg-white/60 text-forest-900 transition-colors duration-300 hover:bg-sage hover:text-forest-950 disabled:cursor-default disabled:opacity-35 disabled:hover:bg-white/60 disabled:hover:text-forest-900"
           >
             {dir === -1 ? <ChevronLeft aria-hidden className="size-5" /> : <ChevronRight aria-hidden className="size-5" />}
           </button>

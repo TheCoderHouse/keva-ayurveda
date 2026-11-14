@@ -17,6 +17,8 @@ export type HeroSlide = {
   external?: boolean;
   image: string;
   alt: string;
+  /** "contain" keeps a non-wide artwork whole instead of cropping it full-bleed */
+  fit?: "contain";
 };
 
 export const heroSlides: HeroSlide[] = [
@@ -25,15 +27,15 @@ export const heroSlides: HeroSlide[] = [
     title: "Ayurveda treatments to Strengthen Your Spine and Joints",
     cta: "Make an appointment",
     href: "appointment",
-    image: "/hero/banner-1.png",
-    alt: "Spine and knee pain",
+    image: "/hero/slide-spine.webp",
+    alt: "Therapist treating an older man's spine",
   },
   {
     kicker: "GIC Empanelled",
     title: "Keva Ayurveda is proud to be empanelled with the GIC Network.",
     cta: "Avail Insurance!",
     href: "/medical-insurance",
-    image: "/hero/Banner.jpeg",
+    image: "/hero/slide-gic.webp",
     alt: "General Insurance Council empanelled hospital award",
   },
   {
@@ -41,31 +43,31 @@ export const heroSlides: HeroSlide[] = [
     title: "Ayurveda Panchakarma to Boost Your Immune System",
     cta: "Make an appointment",
     href: "appointment",
-    image: "/hero/banner-4.png",
-    alt: "Shirodhara treatment",
+    image: "/hero/slide-shirodhara.webp",
+    alt: "Shirodhara oil therapy",
   },
   {
     kicker: "We offer you the best!",
     title: "Ayurveda Remedies to Strengthen Your Skin's Immune System",
     cta: "Make an appointment",
     href: "appointment",
-    image: "/hero/banner-2.png",
-    alt: "Skin condition on forearm",
+    image: "/hero/slide-skin.webp",
+    alt: "Doctor examining a skin condition on a woman's forearm",
   },
   {
     kicker: "We offer you the best!",
     title: "Ayurveda treatments for Infertility",
     cta: "Make an appointment",
     href: "appointment",
-    image: "/hero/banner-3.png",
-    alt: "Fertility",
+    image: "/hero/slide-fertility.webp",
+    alt: "Couple consulting an Ayurveda doctor about fertility",
   },
 ];
 
 /**
  * Hero trust metrics — every figure is from Keva's own material:
  * - 1,00,000+ patients, 9+ branches, 12+ recognitions, 13 years: the "Excellence in Panchakarma" award graphic
- *   (public/awards/bestpanchakarnma.jpg)
+ *   (public/awards/bestpanchakarnma.webp)
  * - 48 conditions: the "Ayurveda Can Treat" list on kevaayurveda.com
  * - 5000+ products: supplied by the client (not stated on the original site)
  * NOTE: the site states no count of doctors, so none is shown.
@@ -99,7 +101,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "The Best Ayurveda Infertility Treatment Centre in Karnataka",
     meta: "India Achiever’s Award · Nov 2023",
-    image: "/awards/ab7.png",
+    image: "/awards/ab7.webp",
     alt: "Kannada Prabha newspaper report on the India Achiever’s Award",
     paragraphs: [
       "Keva Ayurveda wins “The Best Ayurveda Infertility Treatment Centre in Karnataka” at the India Achiever’s Award held at Taj Hotels, Bangalore | Nov 2023. Dr Krishna Kumar, Founder and CEO & Dr Deepika Chief Medical Officer of Keva Ayurveda received this award.",
@@ -108,7 +110,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "The Digital Transformer",
     meta: "International MSME Day · 22 June 2022",
-    image: "/awards/ab1.png",
+    image: "/awards/ab1.webp",
     alt: "Receiving The Digital Transformer award at International MSME Day",
     paragraphs: [
       "Keva Ayurveda has won “The Digital Transformer” award at the International MSME Day organized by Tally at the Radisson Blu Hotel on 22nd June 2022. The award was received by Dr Krishna Kumar S, Founder & CEO of Keva Ayurveda & Dr Deepika, Chief Medical Officer of Keva Ayurveda.",
@@ -118,7 +120,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "The Best Ayurveda Clinic in Bangalore",
     meta: "5th time in a row",
-    image: "/awards/ab3.png",
+    image: "/awards/ab3.webp",
     alt: "Best Ayurvedic Clinic in Bangalore for the 5th consecutive year",
     paragraphs: [
       "Keva Ayurveda has been rated as “The Best Ayurveda Clinic in Bangalore” for 5th time in a row. We thank all our patrons for believing and trusting us. We are committed to continue in bringing the Ayurveda treatments and patient care of highest standards.",
@@ -127,7 +129,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "NABH Accreditation",
     meta: "2nd time in 6 years",
-    image: "/awards/ab6.png",
+    image: "/awards/ab6.webp",
     alt: "Keva Ayurveda is now NABH accredited",
     paragraphs: [
       "Keva Ayurveda has received the prestigious NABH – National Accreditation Board for Hospitals for the 2nd time in 6 years, the first Ayurveda Company to get PANCHAKARMA accreditation. This accreditation has increased the confidence and trust among our patrons and Keva Ayurveda is committed in bringing Ayurveda treatments and patient care of the highest standards.",
@@ -136,7 +138,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "GIC Empanelled",
     meta: "Empanelment ID: 1005793",
-    image: "/awards/award26.jpeg",
+    image: "/awards/award26.webp",
     alt: "General Insurance Council empanelled hospital award",
     paragraphs: [
       "Keva Ayurveda is proud to be empanelled with the General Insurance Council (GIC) Common Empanelment Network. This recognition strengthens our commitment to making Authentic, Affordable & Accessible Ayurveda available to more patients through insurance-supported healthcare.",
@@ -146,7 +148,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "Excellence in Panchakarma Award",
     meta: "AYUSH National Health Awards",
-    image: "/awards/bestpanchakarnma.jpg",
+    image: "/awards/bestpanchakarnma.webp",
     alt: "Excellence in Panchakarma Award at the AYUSH National Health Awards",
     paragraphs: [
       "Keva Ayurveda has been honoured with the Excellence in Panchakarma Award at the AYUSH National Health Awards! Keva Ayurveda, Founder, Dr. Krishna Kumar & Chief Medical Officer, Dr. Deepika M accepted this award from Mr Srinivasulu, AYUSH Commissioner, Govt of Karnataka on behalf of the entire team of Keva Ayurveda, symbolizing our relentless dedication towards Ayurveda and holistic healing.",
@@ -155,7 +157,7 @@ export const awardSlides: AwardSlide[] = [
   {
     title: "The Best Ayurveda Hospital & Clinic",
     meta: "Karnataka Business Awards 2022",
-    image: "/awards/ab2.png",
+    image: "/awards/ab2.webp",
     alt: "Receiving the Best Ayurveda Hospital & Clinic award at Karnataka Business Awards 2022",
     paragraphs: [
       "Keva Ayurveda has won “The Best Ayurveda Hospital & Clinic” award at the prestigious Karnataka Business Awards 2022. The award was presented by Mr. Pruthvi Reddy, State Convener & President Aam Aadmi Party, Karnataka to Dr Krishna Kumar S, Founder & CEO of Keva Ayurveda.",
@@ -204,7 +206,7 @@ export const specialProgrammes = [
 /*  Conditions + One-Stop solution                                            */
 /* -------------------------------------------------------------------------- */
 
-export type ConditionCategory = { id: string; label: string; icon: string; items: string[] };
+export type ConditionCategory = { id: string; label: string; icon: string; image: string; items: string[] };
 
 /**
  * Every condition from the original "Ayurveda Can Treat" list, grouped into categories.
@@ -216,6 +218,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "spine-joint",
     label: "Spine & Joint Care",
     icon: "bone",
+    image: "/categories/spine-joint.webp",
     items: [
       "Ankylosing Spondylitis",
       "Fibromyalgia",
@@ -231,6 +234,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "skin-hair",
     label: "Skin & Hair Care",
     icon: "sparkles",
+    image: "/categories/skin-hair.webp",
     items: [
       "Acne",
       "Dandruff",
@@ -246,6 +250,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "digestive",
     label: "Digestive & Anorectal Care",
     icon: "utensils",
+    image: "/categories/digestive.webp",
     items: [
       "Acidity",
       "Constipation",
@@ -262,6 +267,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "respiratory",
     label: "Respiratory, ENT & Eye",
     icon: "wind",
+    image: "/categories/respiratory.webp",
     items: [
       "Allergic Rhinitis",
       "Allergy",
@@ -275,6 +281,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "reproductive",
     label: "Fertility & Reproductive Health",
     icon: "baby",
+    image: "/categories/reproductive.webp",
     items: [
       "Female Infertility",
       "Leucorrhoea",
@@ -288,6 +295,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "metabolic",
     label: "Metabolic & Lifestyle",
     icon: "activity",
+    image: "/categories/metabolic.webp",
     items: [
       "Anaemia",
       "Diabetes",
@@ -300,6 +308,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "neuro",
     label: "Neurological Care",
     icon: "brain",
+    image: "/categories/neuro.webp",
     items: [
       "Headache",
       "Migraine",
@@ -311,6 +320,7 @@ export const conditionCategories: ConditionCategory[] = [
     id: "kidney",
     label: "Kidney & Urinary",
     icon: "droplets",
+    image: "/categories/kidney.webp",
     items: [
       "Kidney Stones",
       "Urinary Tract Infection",
@@ -338,42 +348,42 @@ export const whyChoose: WhyItem[] = [
   {
     title: "End-To-End Services",
     text: "From in-clinic and online consultation to OP & IP treatments, Ayurveda pharmacy, medicine delivery across India, homecare for the elderly, corporate wellness, complete women care and yoga.",
-    image: "/images/end-to-end.png",
+    image: "/images/end-to-end.webp",
     alt: "Ayurveda therapy room with herbal oils and a treatment table",
     cta: { label: "Make an appointment", href: "appointment" },
   },
   {
     title: "Affordable Price",
     text: "Authentic, Affordable & Accessible Ayurveda for all, the vision Keva Ayurveda began with in 2011.",
-    image: "/images/affordable.png",
+    image: "/images/affordable.webp",
     alt: "A family at an Ayurveda clinic reception desk",
     cta: { label: "Make an appointment", href: "appointment" },
   },
   {
     title: "Highest Quality Standards",
     text: "India’s first NABH Accredited Ayurveda Company, and the first Ayurveda company to get Panchakarma accreditation.",
-    image: "/images/quality.png",
+    image: "/images/quality.webp",
     alt: "A doctor reviewing a checklist in a spotless treatment room",
     cta: { label: "Make an appointment", href: "appointment" },
   },
   {
     title: "Customer Support",
     text: "Call +91 8050080058 for consultations or +91 8050056033 for treatments. We are open 8:00 am – 8:00 pm, all days.",
-    image: "/images/support.png",
+    image: "/images/support.webp",
     alt: "A friendly support team member on a call at the clinic desk",
     cta: { label: "Call now", href: "tel:+918050080058" },
   },
   {
     title: "Insurance Coverage Treatment",
     text: "Empanelled with the General Insurance Council (GIC) Common Empanelment Network, ID 1005793, and approved by IRDA, so Ayurveda treatments can be covered by insurance.",
-    image: "/images/insurance.png",
+    image: "/images/insurance.webp",
     alt: "A doctor explaining paperwork to a patient",
     cta: { label: "Avail Insurance!", href: "/medical-insurance" },
   },
   {
     title: "Experience In Healthcare Sector",
     text: "Operating since 2011, and rated “The Best Ayurveda Clinic in Bangalore” for the 5th time in a row.",
-    image: "/images/experience.png",
+    image: "/images/experience.webp",
     alt: "A senior Ayurveda doctor with herbal medicines",
     cta: { label: "Make an appointment", href: "appointment" },
   },
@@ -454,12 +464,12 @@ export const videoTestimonials = ["ILl1mZaqmO4", "zU6N1ZNOObg", "c0y1Uev1wz4", "
 /* -------------------------------------------------------------------------- */
 
 export const associations = [
-  { name: "ASSOCHAM India", src: "/associations/client1.jpg" },
-  { name: "NABH Accredited", src: "/associations/client2.jpg" },
-  { name: "CureJoy", src: "/associations/client3.jpg" },
-  { name: "Government of Karnataka", src: "/associations/client4.jpg" },
-  { name: "Rohini", src: "/associations/client5-1.jpg" },
-  { name: "IRDAI", src: "/associations/client6-1.jpg" },
+  { name: "ASSOCHAM India", src: "/associations/client1.webp" },
+  { name: "NABH Accredited", src: "/associations/client2.webp" },
+  { name: "CureJoy", src: "/associations/client3.webp" },
+  { name: "Government of Karnataka", src: "/associations/client4.webp" },
+  { name: "Rohini", src: "/associations/client5-1.webp" },
+  { name: "IRDAI", src: "/associations/client6-1.webp" },
 ];
 
 export const essentials = [
@@ -496,7 +506,7 @@ export const faqs: Faq[] = [
     ],
   },
   {
-    q: "What makes Keva Ayurveda different from other Ayurveda clinics?",
+    q: "What makes Keva different from other clinics?",
     a: [
       "Keva Ayurveda stands apart by offering a comprehensive, patient-centric Ayurveda healthcare experience that combines authentic Ayurvedic wisdom with standardized clinical practices and modern healthcare systems. As India’s first NABH Accredited Ayurveda Company, Keva Ayurveda is committed to delivering safe, ethical, and high-quality Ayurvedic care through qualified doctors, evidence-informed treatment protocols, and a strong focus on patient outcomes.",
       "Unlike many standalone Ayurveda clinics, Keva Ayurveda provides a One-Stop Ayurveda Healthcare Solution, offering:",
@@ -519,7 +529,7 @@ export const faqs: Faq[] = [
     a: ["Yes. Keva Ayurveda is India’s first NABH Accredited Ayurveda Company, reflecting its commitment to standardized clinical practices, patient safety, quality systems, and continuous improvement."],
   },
   {
-    q: "What services are available at Keva Ayurveda?",
+    q: "What services does Keva Ayurveda offer?",
     a: [
       "Keva Ayurveda offers:",
       [
@@ -551,7 +561,7 @@ export const faqs: Faq[] = [
     a: ["Yes. Keva Ayurveda offers doctor-supervised Panchakarma therapies that are customized according to the patient’s condition, body constitution (Prakriti), and treatment goals. Panchakarma may be recommended for detoxification, rejuvenation, pain management, and certain chronic conditions after medical evaluation."],
   },
   {
-    q: "Does Keva Ayurveda have inpatient treatment facilities?",
+    q: "Does Keva Ayurveda offer inpatient care?",
     a: ["Yes. Depending on the treatment plan, patients may receive care through outpatient consultations or inpatient Panchakarma programs that provide supervised therapy, dietary management, and daily medical monitoring."],
   },
   {
@@ -575,7 +585,7 @@ export const faqs: Faq[] = [
     a: ["The duration of treatment varies depending on the medical condition, severity of symptoms, individual response to treatment, and treatment goals. Your Ayurveda doctor will explain the expected duration after evaluating your condition."],
   },
   {
-    q: "Is Ayurveda suitable for long-term health management?",
+    q: "Is Ayurveda suitable for long-term health?",
     a: ["Ayurveda focuses on maintaining balance in the body through personalized diet, lifestyle, herbal medicines, and therapies. Many people use Ayurvedic care for preventive health, wellness, and long-term management of chronic conditions under the guidance of qualified practitioners."],
   },
   {
@@ -607,7 +617,8 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Medical Director, Founder",
     credentials: "BAMS, PGDND, FAGE (Manipal)",
     experience: "16 years",
-    photo: "/doctors/krishna.jpg",
+    photo: "/doctors/krishna.webp",
+    cutout: "/doctors/panel/p27.webp",
     about: [
       "Dr. Krishna Kumar has been rated as one of the best Ayurveda doctors in Bangalore, recently awarded Gold star award for medical excellence by global achievers foundation. Armed with BAMS degree, PG in Nutrition & Dietetics, Fellowship from Manipal (age).",
     ],
@@ -618,7 +629,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Chief Medical Officer",
     credentials: "BAMS, YIC, FAGE (Manipal)",
     experience: "13 years",
-    photo: "/doctors/deepika.jpg",
+    photo: "/doctors/deepika.webp",
+    cutout: "/doctors/panel/p22.webp",
+    specialties: ["PCOD", "Arthritis & spondylitis", "Panchakarma"],
     about: [
       "Dr. Deepika is one of the best Ayurvedic Doctor in Bangalore, rated with good reviews. She has bagged SIWAA award 2020 for her excellence in Medical Service. She has done her BAMS, YIC from SVYASA and FAGE (Manipal). She has also done certification courses in Ayurvedic Obstetrics & Gynecology, Infertility.",
     ],
@@ -629,7 +642,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Yoga & Naturopathy Consultant",
     credentials: "BNYS – SDM Ujire",
     experience: "5 years",
-    photo: "/doctors/dr.jpg",
+    photo: "/doctors/dr.webp",
+    cutout: "/doctors/panel/p19.webp",
+    specialties: ["Arthritis & spondylitis", "Paralysis & Parkinson", "Obesity & PCOD"],
     about: [
       "Dr Akkamahadevi has 5 years of experience in Yoga and Naturopathy. She was working as a Yoga and Naturopathy Consultant in SDM, Ujire and has been treating patients successfully for Arthritis, Spondylitis, Parkinson, Paralysis, Obesity and PCOD, Infertility, Diabetes, Hypertension, stress management, Asthma, Sinusitis, Migraine and others.",
     ],
@@ -639,7 +654,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Senior Ayurveda Consultant",
     credentials: "BAMS, YIC (SVYASA), CCN & CND (VLCC)",
     experience: "15+ years",
-    photo: "/doctors/Geetika-Thakur.gif",
+    photo: "/doctors/Geetika-Thakur.webp",
+    cutout: "/doctors/panel/p23.webp",
+    specialties: ["Joint disorders & arthritis", "Skin disorders", "Sciatica & spondylitis"],
     about: [
       "Dr. Geetika is an Ayurvedic Doctor with more than 15 years of experience. She is a qualified BAMS, certified YIC from SVYASA and CCN & CND from VLCC.",
       "She is specialized in treating Joint disorders like Arthritis etc; Skin disorders, Sciatica, Spondylitis, Paralysis, Digestive disorders, Lifestyle disorders like Obesity, Diabetes, hypertension, PCOD; General disorder like hair fall, Dandruff; Panchakarma / Detoxification and general health issues.",
@@ -651,7 +668,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Senior Ayurveda Consultant",
     credentials: "BAMS",
     experience: "16 years",
-    photo: "/doctors/Dr-Ayesha-Firdous.jpg",
+    photo: "/doctors/Dr-Ayesha-Firdous.webp",
+    cutout: "/doctors/panel/p21.webp",
+    specialties: ["Panchakarma", "Digestive disorders", "Acne & skin disorders"],
     about: ["Specialized in panchakarma, Digestive Disorders, Acne, Migraine, Skin Disorders, etc."],
   },
   {
@@ -659,7 +678,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Ayurveda Consultant",
     credentials: "BAMS",
     experience: "14 years",
-    photo: "/doctors/drRekha.jpg",
+    photo: "/doctors/drRekha.webp",
+    cutout: "/doctors/panel/p24.webp",
+    specialties: ["PCOD & infertility", "Pregnancy & post natal care", "Skin, joint & spine"],
     about: [
       "She is specialised in the treatment of PCOD, Female and Male infertility, Pregnancy Care, Post natal Care, Allergies, Asthma, Skin problems like Psoriasis, Acne, Dermatitis etc, Joint disorders like Rheumatoid Arthritis, Gout, Osteoarthritis, Diabetes management, Pain management, Hypertension management, TTTS (twin to twin transfusion syndrome) management, Depression, Thyroid disorder treatment, Obesity / weightloss management, Spine disorders like Sciatica, Cervical Spondylitis, Digestive disorders, Anxiety, Stress related disorders, Insomnia, Constipation, Piles, Fissures, Fistula, Eye disorders, Refractive error treatments for children and adults. Hairfall treatment and management. Beauty enhancement treatments.",
       "She is skilled in the use of Panchakarma therapies, Ayurvedic medicines, Dietary suggestions according to ailments, Prakruti of a person and seasonal conditions.",
@@ -670,7 +691,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Senior Ayurveda Physician",
     credentials: "BAMS, DPCH",
     experience: "18 years",
-    photo: "/doctors/Dr-Anuja-Marawar.jpg",
+    photo: "/doctors/Dr-Anuja-Marawar.webp",
+    cutout: "/doctors/panel/p20.webp",
+    specialties: ["Hair fall & hair disorders", "Migraine & sinusitis", "Skin & digestive disorders"],
     about: [
       "Dr Anuja is providing traditional and authentic Ayurvedic treatments with the sole purpose of relief to the patient. Her experience includes providing effective treatments for hair thinning, hair fall and other hair disorders, migraine and headache, sinusitis, skin disorders, hyperacidity and stomach problems, stress management and related lifestyle disorders.",
     ],
@@ -680,7 +703,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Senior Ayurveda Consultant",
     credentials: "BAMS, PG Diploma in Panchakarma",
     experience: "13 years",
-    photo: "/doctors/kishan.jpg",
+    photo: "/doctors/kishan.webp",
+    cutout: "/doctors/panel/p28.webp",
+    specialties: ["Panchakarma"],
     about: [
       "Worked as consultant and Medical officer in various reputed Ayurvedic institutions with 9 yrs of experience in practice and specialized in Panchakarma.",
     ],
@@ -689,7 +714,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     name: "Dr. Manisha Issac",
     role: "Senior Ayurveda Consultant",
     experience: "16+ years",
-    photo: "/doctors/manisha-Issac.jpg",
+    photo: "/doctors/manisha-Issac.webp",
+    cutout: "/doctors/panel/p26.webp",
+    specialties: ["Diabetes", "Spinal disorders & arthritis", "Infertility & skin disorders"],
     about: [
       "Dr. Manisha Issac has over 16 years of professional experience in the field of Ayurvedic Medical Science. She is currently working as a Senior Doctor in Ayushman Panchakarma Therapy Centre, Kaggadasapura, Consultant Physician at Keva Ayurveda, Whitefield. She graduated from Government Ayurveda College Trivandrum, a premier institute in the field of Ayurvedic Medical Sciences.",
       "Dr. Manisha specializes in Diabetes, Spinal Disorders, Arthritis Management, Pediatric, Infertility, Skin Disorders, Metabolic Disorders and Panchakarma.",
@@ -700,7 +727,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     role: "Yoga & Naturopathy Consultant",
     credentials: "Bachelor’s in Naturopathy and Yogic Sciences; Post graduation in Clinical Yoga from SDM College of Naturopathy and Yogic Sciences",
     experience: "4 years",
-    photo: "/doctors/newdoc5.png",
+    photo: "/doctors/newdoc5.webp",
+    cutout: "/doctors/panel/p29.webp",
+    specialties: ["Lifestyle disorders", "Gynaecological disorders", "Pain management"],
     about: [
       "Having 4 years of experience in ayurvedic clinical practice.",
       "Has clinical experience of dealing with lifestyle related disorders, gynaecological disorders, Pain management. Has expertise in effectively delivering therapeutic yoga sessions, acupuncture, diet counselling. Firmly believes in the principles of Nature cure and is enthusiastic to implement the same to the health care system.",
@@ -710,7 +739,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     name: "Dr. Pavana Shetty",
     role: "Ayurvedic Consultant & Wellness Expert",
     experience: "15+ years",
-    photo: "/doctors/drpavan.jpg",
+    photo: "/doctors/drpavan.webp",
+    cutout: "/doctors/panel/p25.webp",
+    specialties: ["Panchakarma", "Women's health", "Lifestyle disease management"],
     about: [
       "With over 15 years of dedicated practice in traditional Ayurveda, Dr. Paavana is a trusted name in holistic healing and preventive care. She specializes in Panchakarma therapy, lifestyle disease management, women’s health, and stress-related disorders. Her deep understanding of ancient Ayurvedic principles, combined with a modern, patient-centric approach, has helped thousands of patients restore balance and vitality in their lives.",
     ],
@@ -720,7 +751,9 @@ const doctorData: Omit<Doctor, "slug">[] = [
     name: "Dr. Ajna Jasmin J",
     role: "Ayurvedic Consultant",
     credentials: "BAMS",
-    photo: "/doctors/drajna.jpg",
+    photo: "/doctors/drajna.webp",
+    cutout: "/doctors/panel/p18.webp",
+    specialties: ["Spinal disorders & pain", "Digestive issues", "PCOS & gynaecological care"],
     about: [
       "Dr Ajna Jasmin J is an Ayurvedic consultant. Completed Bachelor in Ayurvedic Medicine and Surgery from Sri Kalabyraveshwara Swamy Ayurvedic College Hospital and Research Center.",
       "Specialties: She is specialized in Spinal disorders, Pain Management, Digestive issues, Gynaecological disease like PCOS, Preconception care, Post Natal Care, Arthritis, Migraine, Skin Disorders like Psoriasis, Eczema, Allergies, Acne, Obesity and Weight Management.",
@@ -785,3 +818,17 @@ export const aboutPage = {
     { title: "Rejuvenative Treatments", items: ["Ayurveda Beauty Treatments", "Corporate Wellness Programme", "Travellers Detox Programme", "Bridal & Groom Package", "Geriatric Care Package", "Authentic Kerala Treatments", "Hair Care Package"] },
   ],
 };
+
+/**
+ * Home "Our Panel Of Doctors" stage, left to right: Dr. Krishna Kumar stands in the centre, his team on either side
+ * (most senior closest to him). Only doctors with a cut-out photo are shown.
+ */
+const PANEL_ORDER = [
+  "Dr. Akkamahadevi D", "Dr. Rekha. KM", "Dr. Ayesha Firdous", "Dr. Geetika Thakur", "Dr. Deepika",
+  "Dr. Krishna Kumar",
+  "Dr. Kishan", "Dr. Anuja Marawar", "Dr. Manisha Issac", "Dr. Pavana Shetty", "Dr. Shraddha", "Dr. Ajna Jasmin J",
+];
+export const panelDoctors: Doctor[] = PANEL_ORDER.map((n) => doctors.find((d) => d.name === n)).filter((d): d is Doctor => !!d?.cutout);
+export const founderDoctor = panelDoctors.find((d) => d.name === "Dr. Krishna Kumar")!;
+/** everyone else on the panel, as cards under the founder section */
+export const teamDoctors = panelDoctors.filter((d) => d !== founderDoctor);

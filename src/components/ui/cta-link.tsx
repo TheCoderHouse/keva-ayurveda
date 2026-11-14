@@ -5,10 +5,10 @@ import { cn } from "@/lib/cn";
 type Variant = "primary" | "gold" | "outline" | "ghost" | "outline-light";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-forest-900 text-ivory hover:bg-forest-700",
-  gold: "bg-sage text-forest-950 hover:bg-ivory",
-  outline: "border border-forest-900/25 text-forest-900 hover:border-forest-900 hover:bg-forest-900 hover:text-ivory",
-  "outline-light": "border border-ivory/40 text-ivory hover:bg-ivory hover:text-forest-900",
+  primary: "bg-sage text-forest-950 shadow-[0_10px_24px_-10px_rgb(60_140_70/0.55)] hover:-translate-y-0.5 hover:bg-mint hover:shadow-[0_16px_32px_-10px_rgb(60_140_70/0.5)]",
+  gold: "bg-sage text-forest-950 shadow-[0_10px_28px_-10px_rgb(181_217_138/0.8)] hover:-translate-y-0.5 hover:bg-sage-100",
+  outline: "border border-forest-900/25 text-forest-900 hover:border-sage hover:bg-sage hover:text-forest-950",
+  "outline-light": "border border-forest-900/30 text-forest-900 hover:bg-sage",
   ghost: "text-forest-900 hover:text-gold-700",
 };
 
@@ -23,7 +23,7 @@ type ButtonProps = {
 
 export function CtaLink({ href, variant = "primary", arrow = true, external, className, children }: ButtonProps) {
   const cls = cn(
-    "group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-7 text-sm font-medium tracking-wide transition-colors duration-300",
+    "group inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-full px-7 text-sm font-semibold tracking-wide transition-[color,background-color,translate,box-shadow,border-color] duration-300",
     variants[variant],
     className,
   );

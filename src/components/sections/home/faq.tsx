@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import { Plus } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -45,11 +48,13 @@ function linkify(text: string) {
 
 /** FAQ's — all 16 questions and answers as published on kevaayurveda.com. One answer open at a time (native <details>). */
 export function Faq() {
+  const [all, setAll] = useState(false);
+  const shown = all ? faqs : faqs.slice(0, 6);
   return (
-    <section aria-labelledby="faq-title" className="relative isolate overflow-clip py-16 lg:py-24">
+    <section aria-labelledby="faq-title" className="relative isolate overflow-clip py-12 sm:py-16 lg:py-24">
       <style>{SHUTTER_CSS}</style>
       {/* same treatment as the category and essentials sections (own photo); questions sit directly on the photo, no panel: pinned (parallax) light photo under a pale wash */}
-      <div aria-hidden className="absolute inset-0 -z-20 bg-cover bg-center motion-reduce:bg-scroll lg:bg-fixed" style={{ backgroundImage: "url('/images/support.png')" }} />
+      <div aria-hidden className="absolute inset-0 -z-20 bg-cover bg-center motion-reduce:bg-scroll lg:bg-fixed" style={{ backgroundImage: "url('/images/support.webp')" }} />
       <div aria-hidden className="absolute inset-0 -z-10 bg-ivory/85" />
       <Container>
         <Reveal>
@@ -57,10 +62,10 @@ export function Faq() {
         </Reveal>
 
         <Reveal delay={120} className="mx-auto mt-10 max-w-6xl">
-          <div className="divide-y divide-forest-900/20 border-y border-forest-900/20">
-            {faqs.map((f) => (
-              <details key={f.q} name="faq" className="faq-item group py-5">
-                <summary className="flex cursor-pointer select-none list-none items-center justify-between gap-6 font-display text-xl font-medium leading-snug text-forest-900 sm:text-2xl [&::-webkit-details-marker]:hidden">
+          <div className="grid items-start gap-x-12 lg:grid-cols-2">
+            {shown.map((f) => (
+              <details key={f.q} name="faq" className="faq-item group border-b border-forest-900/20 py-5">
+                <summary className="flex cursor-pointer select-none list-none items-center justify-between gap-6 font-display text-[15px] font-medium leading-snug text-forest-900 sm:text-lg lg:text-xl [&::-webkit-details-marker]:hidden">
                   {f.q}
                   <Plus aria-hidden className="size-5 shrink-0 text-gold-700 transition-transform duration-300 group-open:rotate-45" />
                 </summary>
@@ -79,6 +84,16 @@ export function Faq() {
                 </div>
               </details>
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <button
+              type="button"
+              aria-expanded={all}
+              onClick={() => setAll((v) => !v)}
+              className="inline-flex min-h-12 cursor-pointer items-center gap-2 rounded-full border border-forest-900/25 bg-white/60 px-7 text-sm font-semibold text-forest-900 backdrop-blur-md transition-[background-color,color,border-color] duration-300 hover:border-forest-900 hover:bg-forest-900 hover:text-ivory"
+            >
+              {all ? "Show fewer questions" : `Show all ${faqs.length} questions`}
+            </button>
           </div>
         </Reveal>
       </Container>

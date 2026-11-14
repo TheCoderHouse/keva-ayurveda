@@ -18,17 +18,17 @@ export function About() {
         <div
           aria-hidden
           className="absolute inset-0 -z-20 bg-cover bg-center motion-reduce:bg-scroll lg:bg-fixed"
-          style={{ backgroundImage: "url('/hero/banner-4.png')" }}
+          style={{ backgroundImage: "url('/hero/banner-4.webp')" }}
         />
         <div aria-hidden className="absolute inset-0 -z-10 bg-ivory/90" />
         <Container>
           <Reveal>
-            <h1 id="about-title" className="max-w-3xl text-balance text-4xl text-forest-900 sm:text-5xl lg:text-6xl">{aboutPage.title}</h1>
+            <h1 id="about-title" className="max-w-3xl text-balance text-3xl text-forest-900 sm:text-5xl lg:text-6xl">{aboutPage.title}</h1>
             <span aria-hidden className="mt-4 block h-0.5 w-20 bg-sage" />
-            <p className="mt-6 max-w-4xl text-lg leading-relaxed text-ink-soft">{aboutPage.lead}</p>
+            <p className="mt-5 max-w-4xl text-base sm:text-lg leading-relaxed text-ink-soft">{aboutPage.lead}</p>
             <ul className="mt-6 flex flex-wrap gap-2" aria-label="What Keva Ayurveda is">
               {aboutPage.services.map((s) => (
-                <li key={s} className="rounded-full bg-forest-900 px-4 py-1.5 text-sm font-medium text-ivory">{s}</li>
+                <li key={s} className="rounded-full bg-sage px-4 py-1.5 text-sm font-medium text-forest-950">{s}</li>
               ))}
             </ul>
           </Reveal>
@@ -36,7 +36,7 @@ export function About() {
           <div className="mt-10 grid gap-4 lg:grid-cols-2">
             <Reveal>
               <article className="h-full rounded-3xl bg-ivory/90 p-6 shadow-soft sm:p-8">
-                <h2 className="font-display text-3xl text-forest-900">About Keva Ayurveda</h2>
+                <h2 className="font-display text-2xl text-forest-900 sm:text-3xl">About Keva Ayurveda</h2>
                 <p className="mt-3 leading-relaxed text-ink-soft">{aboutPage.story}</p>
               </article>
             </Reveal>
@@ -60,16 +60,16 @@ export function About() {
       {/* Why choose */}
       <section aria-labelledby="why-title" className="bg-sage/25 py-12 lg:py-16">
         <Container>
-          <h2 id="why-title" className="text-balance text-center text-3xl text-forest-900 sm:text-4xl lg:text-5xl">Why Choose Keva Ayurveda</h2>
+          <h2 id="why-title" className="text-balance text-center text-[1.65rem] leading-tight text-forest-900 sm:text-4xl lg:text-5xl">Why Choose Keva Ayurveda</h2>
           <ul className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-3 lg:gap-4">
             {aboutPage.why.map((w, i) => (
               <li key={w.title}>
                 <Reveal delay={(i % 3) * 90} className="h-full">
-                  <div className="flex h-full flex-col items-center gap-3 rounded-2xl border border-forest-900/10 bg-ivory px-4 py-6 text-center shadow-soft">
+                  <div className="flex h-full flex-col items-center gap-3 rounded-2xl border border-forest-900/10 bg-ivory px-3 py-5 text-center shadow-soft sm:px-4 sm:py-6">
                     <span className="grid size-12 place-items-center rounded-full bg-sage/60 text-forest-900">
                       <Icon name={w.icon} className="size-6" />
                     </span>
-                    <span className="text-base font-medium leading-snug text-forest-900">{w.title}</span>
+                    <span className="text-sm font-medium leading-snug sm:text-base text-forest-900">{w.title}</span>
                   </div>
                 </Reveal>
               </li>
@@ -81,7 +81,7 @@ export function About() {
       {/* Explore */}
       <section aria-labelledby="explore-title" className="py-12 lg:py-16">
         <Container>
-          <h2 id="explore-title" className="text-balance text-center text-3xl text-forest-900 sm:text-4xl lg:text-5xl">Explore Keva Ayurveda</h2>
+          <h2 id="explore-title" className="text-balance text-center text-[1.65rem] leading-tight text-forest-900 sm:text-4xl lg:text-5xl">Explore Keva Ayurveda</h2>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
             {aboutPage.explore.map((g, i) => (
               <Reveal key={g.title} delay={i * 100} className="h-full">

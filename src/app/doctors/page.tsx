@@ -15,10 +15,10 @@ export default function DoctorsPage() {
         <h1 id="doctors-page-title" className="text-balance text-4xl text-forest-900 sm:text-5xl lg:text-6xl">
           Our Panel Of Doctors
         </h1>
-        <ul className="mt-8 space-y-4">
-          {doctors.map((d) => (
+        <ul className="mt-44 space-y-44 sm:space-y-40">
+          {doctors.map((d, i) => (
             <li key={d.slug}>
-              <DoctorRow doctor={d} />
+              <DoctorRow doctor={d} flip={i % 2 === 1} />
             </li>
           ))}
         </ul>

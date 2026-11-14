@@ -13,7 +13,7 @@ export function SectionTitle({
   children: React.ReactNode;
 }) {
   return (
-    <Tag id={id} className={cn("text-balance text-center text-3xl text-forest-900 sm:text-4xl lg:text-5xl", className)}>
+    <Tag id={id} className={cn("text-balance text-center text-[1.65rem] leading-tight font-semibold sm:text-4xl text-forest-900 sm:text-4xl lg:text-5xl", className)}>
       {children}
     </Tag>
   );

@@ -46,7 +46,7 @@ export function DoctorsCarousel({ doctors }: { doctors: Doctor[] }) {
               onClick={() => scrollBy(dir)}
               disabled={disabled}
               aria-label={dir === -1 ? "Previous doctors" : "Next doctors"}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-forest-900/25 bg-white/60 text-forest-900 transition-colors duration-300 hover:bg-forest-900 hover:text-ivory disabled:cursor-default disabled:opacity-35 disabled:hover:bg-white/60 disabled:hover:text-forest-900"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-forest-900/25 bg-white/60 text-forest-900 transition-colors duration-300 hover:bg-sage hover:text-forest-950 disabled:cursor-default disabled:opacity-35 disabled:hover:bg-white/60 disabled:hover:text-forest-900"
             >
               {dir === -1 ? <ChevronLeft aria-hidden className="size-5" /> : <ChevronRight aria-hidden className="size-5" />}
             </button>

@@ -138,7 +138,7 @@ export function AboutJourney() {
                       aria-hidden
                       className={cn(
                         "absolute grid size-11 place-items-center rounded-full border-2 shadow-soft transition-colors duration-500",
-                        done ? "border-forest-900 bg-forest-900 text-ivory" : "border-forest-900/25 bg-ivory text-forest-900",
+                        done ? "border-sage bg-sage text-forest-950" : "border-forest-900/25 bg-ivory text-forest-900",
                         on && "ring-4 ring-sage",
                       )}
                       style={{ left: pt.x - 22 - PAD, top: 8 }}

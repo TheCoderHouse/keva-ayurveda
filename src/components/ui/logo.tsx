@@ -9,14 +9,14 @@ export function Logo({ tone = "dark", className }: { tone?: "dark" | "light"; cl
       <span
         className={cn(
           "grid size-9 place-items-center rounded-full",
-          light ? "bg-gold-300 text-forest-950" : "bg-forest-900 text-gold-300",
+          "bg-sage text-forest-950",
         )}
       >
         <Leaf aria-hidden className="size-4.5" strokeWidth={1.6} />
       </span>
-      <span className={cn("font-display text-2xl font-medium leading-none tracking-tight", light ? "text-ivory" : "text-forest-900")}>
+      <span className={cn("font-display text-2xl font-medium leading-none tracking-tight", light ? "text-white" : "text-forest-900")}>
         Keva
-        <span className={cn("ml-1.5 text-[0.62em] font-sans font-medium uppercase tracking-[0.28em]", light ? "text-gold-300" : "text-gold-700")}>
+        <span className={cn("ml-1.5 text-[0.62em] font-sans font-medium uppercase tracking-[0.28em]", light ? "text-sage" : "text-gold-700")}>
           Ayurveda
         </span>
       </span>

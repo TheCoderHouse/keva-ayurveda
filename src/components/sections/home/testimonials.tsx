@@ -7,7 +7,7 @@ import { VideoTestimonials } from "./video-testimonials";
 /** Testimonials — patient reviews by platform, then the "Testimonial Diaries" videos. All from kevaayurveda.com. */
 export function Testimonials() {
   return (
-    <section aria-labelledby="testimonials-title" className="bg-sage/25 py-16 lg:py-24">
+    <section aria-labelledby="testimonials-title" className="bg-sage/25 py-12 sm:py-16 lg:py-24">
       <Container>
         <Reveal>
           <SectionTitle id="testimonials-title">Testimonials</SectionTitle>
@@ -19,7 +19,7 @@ export function Testimonials() {
           </Reveal>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-12 sm:mt-16">
           <Reveal>
             <SectionTitle as="h3">Testimonial Diaries</SectionTitle>
             <VideoTestimonials />

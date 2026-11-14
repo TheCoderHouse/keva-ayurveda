@@ -33,7 +33,7 @@ export function DoctorCard({ doctor: d }: { doctor: Doctor }) {
         <span className="mt-1 font-sans text-[13px] font-medium leading-snug text-gold-700">{d.role}</span>
         {d.credentials && (
           <span className="mt-2 flex items-start gap-1.5 font-sans text-[12px] font-light leading-snug text-ink-soft">
-            <GraduationCap aria-hidden className="mt-px size-3.5 shrink-0 text-sage" strokeWidth={1.6} />
+            <GraduationCap aria-hidden className="mt-px size-3.5 shrink-0 text-gold-700" strokeWidth={1.6} />
             <span className="line-clamp-2">{d.credentials}</span>
           </span>
         )}
